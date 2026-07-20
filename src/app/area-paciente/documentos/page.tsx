@@ -16,7 +16,7 @@ export default function DocumentosPage() {
       <div className="space-y-4">
         {p.documents.map((d) => (
           <Card key={d.name} hover={false} className="flex items-center gap-5">
-            <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-azure-50 text-azure-600">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gold-50 text-gold-600">
               <FileText className="size-5" aria-hidden />
             </span>
             <div className="flex-1">

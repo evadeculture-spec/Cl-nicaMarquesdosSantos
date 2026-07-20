@@ -18,7 +18,7 @@ export default function AdminProfissionais() {
             <span
               className={cn(
                 "flex size-12 shrink-0 items-center justify-center rounded-xl font-semibold",
-                m.accent === "azure" ? "bg-azure-50 text-azure-700" : "bg-sage-100 text-sage-700",
+                m.accent === "gold" ? "bg-gold-50 text-gold-700" : "bg-sage-100 text-sage-700",
               )}
               aria-hidden
             >

@@ -34,7 +34,7 @@ function isSameDay(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
-const clinicians = team.filter((m) => m.role.includes("Fisioterapeuta"));
+const clinicians = team.filter((m) => !m.role.includes("Assistente"));
 
 export function BookingWizard({ initialSpecialty }: { initialSpecialty?: string }) {
   const [step, setStep] = useState(0);
@@ -138,7 +138,7 @@ export function BookingWizard({ initialSpecialty }: { initialSpecialty?: string 
               className={cn(
                 "flex size-8 items-center justify-center rounded-full text-xs font-semibold transition-all duration-500",
                 i < step && "bg-sage-100 text-sage-700",
-                i === step && "bg-azure-600 text-white shadow-soft",
+                i === step && "bg-gold-600 text-white shadow-soft",
                 i > step && "bg-mist text-muted",
               )}
               aria-current={i === step ? "step" : undefined}
@@ -178,13 +178,13 @@ export function BookingWizard({ initialSpecialty }: { initialSpecialty?: string 
                   className={cn(
                     "rounded-2xl border p-6 text-left transition-all duration-300 ease-[var(--ease-calm)]",
                     treatment?.id === t.id
-                      ? "border-azure-500 bg-azure-50/50 ring-4 ring-azure-100"
+                      ? "border-gold-500 bg-gold-50/50 ring-4 ring-gold-100"
                       : "border-line bg-white shadow-soft hover:-translate-y-0.5 hover:shadow-lift",
                   )}
                 >
                   <div className="flex items-baseline justify-between gap-3">
                     <h3 className="font-semibold tracking-tight text-ink">{t.name}</h3>
-                    <span className="text-sm font-medium text-azure-700">
+                    <span className="text-sm font-medium text-gold-700">
                       {formatCurrencyPt(t.price)}
                     </span>
                   </div>
@@ -208,14 +208,14 @@ export function BookingWizard({ initialSpecialty }: { initialSpecialty?: string 
                   className={cn(
                     "flex items-center gap-4 rounded-2xl border p-6 text-left transition-all duration-300 ease-[var(--ease-calm)]",
                     professional?.id === m.id
-                      ? "border-azure-500 bg-azure-50/50 ring-4 ring-azure-100"
+                      ? "border-gold-500 bg-gold-50/50 ring-4 ring-gold-100"
                       : "border-line bg-white shadow-soft hover:-translate-y-0.5 hover:shadow-lift",
                   )}
                 >
                   <span
                     className={cn(
                       "flex size-12 shrink-0 items-center justify-center rounded-xl font-semibold",
-                      m.accent === "azure" ? "bg-azure-50 text-azure-700" : "bg-sage-100 text-sage-700",
+                      m.accent === "gold" ? "bg-gold-50 text-gold-700" : "bg-sage-100 text-sage-700",
                     )}
                     aria-hidden
                   >
@@ -279,11 +279,11 @@ export function BookingWizard({ initialSpecialty }: { initialSpecialty?: string 
                         className={cn(
                           "aspect-square rounded-xl text-sm transition-all duration-200",
                           selected
-                            ? "bg-azure-600 font-semibold text-white shadow-soft"
+                            ? "bg-gold-600 font-semibold text-white shadow-soft"
                             : past || closed
                               ? "text-muted/40"
-                              : "text-ink hover:bg-azure-50",
-                          !selected && !past && !closed && isSameDay(d, today) && "font-semibold text-azure-700",
+                              : "text-ink hover:bg-gold-50",
+                          !selected && !past && !closed && isSameDay(d, today) && "font-semibold text-gold-700",
                         )}
                       >
                         {d.getDate()}
@@ -311,8 +311,8 @@ export function BookingWizard({ initialSpecialty }: { initialSpecialty?: string 
                         className={cn(
                           "rounded-xl border px-3 py-2.5 text-sm tabular-nums transition-all duration-200",
                           slot === m
-                            ? "border-azure-500 bg-azure-600 font-medium text-white shadow-soft"
-                            : "border-line bg-white text-ink hover:border-azure-200 hover:bg-azure-50",
+                            ? "border-gold-500 bg-gold-600 font-medium text-white shadow-soft"
+                            : "border-line bg-white text-ink hover:border-gold-200 hover:bg-gold-50",
                         )}
                       >
                         {minutesToTime(m)}

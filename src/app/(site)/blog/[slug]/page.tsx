@@ -51,7 +51,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
               Voltar ao blog
             </Link>
             <div className="flex flex-wrap items-center gap-3">
-              <Badge tone="azure">{post.category}</Badge>
+              <Badge tone="gold">{post.category}</Badge>
               <span className="text-sm text-muted">
                 <time dateTime={post.date}>{formatDatePt(post.date)}</time> ·{" "}
                 {post.readingMinutes} min de leitura

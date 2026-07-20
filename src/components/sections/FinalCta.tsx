@@ -9,7 +9,8 @@ export function FinalCta() {
       <Reveal>
         <div className="hero-field relative overflow-hidden rounded-[2.5rem] border border-line px-8 py-20 text-center shadow-soft lg:py-28">
           <h2 className="text-display text-balance-pretty mx-auto max-w-2xl text-3xl text-ink sm:text-5xl">
-            A dor não tem de fazer parte do seu dia.
+            A dor não tem de fazer parte{" "}
+            <span className="text-brand-accent text-gold-600">do seu dia.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-md text-lg leading-relaxed text-slate">
             Marque a sua avaliação inicial. Uma hora inteira, um plano claro, e

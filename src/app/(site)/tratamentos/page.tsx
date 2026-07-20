@@ -6,7 +6,7 @@ import { FaqSection } from "@/components/sections/FaqSection";
 export const metadata: Metadata = {
   title: "Tratamentos e preços",
   description:
-    "Preços claros de fisioterapia em Lisboa: avaliação inicial 55€, sessão individual 45€, pilates clínico, osteopatia, fisioterapia pélvica e domicílios.",
+    "Preços claros em Castelo Branco: avaliação inicial, fisioterapia, osteopatia, reabilitação perineal e estética, podoposturologia, terapia da fala e psicologia.",
   alternates: { canonical: "/tratamentos" },
 };
 

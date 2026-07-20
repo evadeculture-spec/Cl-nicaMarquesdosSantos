@@ -41,7 +41,7 @@ export function ContactSection() {
                   key={d.label}
                   className="flex items-start gap-4 rounded-2xl border border-line bg-white p-6 shadow-soft"
                 >
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-azure-50 text-azure-600">
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gold-50 text-gold-600">
                     <d.icon className="size-4.5" aria-hidden />
                   </span>
                   <div>
@@ -49,7 +49,7 @@ export function ContactSection() {
                     {d.href ? (
                       <a
                         href={d.href}
-                        className="mt-0.5 block text-sm text-slate transition-colors hover:text-azure-600"
+                        className="mt-0.5 block text-sm text-slate transition-colors hover:text-gold-600"
                       >
                         {d.value}
                       </a>
@@ -64,25 +64,25 @@ export function ContactSection() {
             {/* Mapa — placeholder elegante e leve; sem iframes de terceiros a pesar o LCP */}
             <div className="relative overflow-hidden rounded-2xl border border-line bg-white shadow-soft">
               <div
-                className="h-56 w-full bg-[radial-gradient(24rem_12rem_at_50%_50%,rgb(220_235_250/.8),transparent),linear-gradient(#f7f9fb,#eef2f6)]"
+                className="h-56 w-full bg-[radial-gradient(24rem_12rem_at_50%_50%,rgb(244_238_218/.8),transparent),linear-gradient(#f9f7f0,#f1ecdc)]"
                 aria-hidden
               >
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                   <span className="relative flex size-4">
-                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-azure-500/40" />
-                    <span className="relative inline-flex size-4 rounded-full border-2 border-white bg-azure-600 shadow-soft" />
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold-500/40" />
+                    <span className="relative inline-flex size-4 rounded-full border-2 border-white bg-gold-600 shadow-soft" />
                   </span>
                 </div>
               </div>
               <div className="flex items-center justify-between border-t border-line px-6 py-4">
-                <p className="text-sm text-slate">Av. da República · Metro Saldanha</p>
+                <p className="text-sm text-slate">R. Dr. Francisco Robalo Guedes · Castelo Branco</p>
                 <a
                   href={`https://maps.google.com/?q=${encodeURIComponent(
                     `${clinic.name}, ${clinic.address.street}, ${clinic.address.locality}`,
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-azure-600 transition-colors hover:text-azure-700"
+                  className="text-sm font-medium text-gold-600 transition-colors hover:text-gold-700"
                 >
                   Abrir no Google Maps
                 </a>

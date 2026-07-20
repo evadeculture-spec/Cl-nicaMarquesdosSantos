@@ -12,9 +12,9 @@ export const faqs: Faq[] = [
       "A avaliação inicial dura 60 minutos e as sessões de tratamento 45 a 60 minutos, sempre individuais e com o mesmo fisioterapeuta. Não trabalhamos com várias pessoas em simultâneo.",
   },
   {
-    question: "Trabalham com seguros de saúde?",
+    question: "Tem ADSE, SAMS ou outro seguro de saúde?",
     answer:
-      "Sim. Trabalhamos com os principais seguros e subsistemas (Multicare, Médis, AdvanceCare, ADSE, entre outros). Emitimos fatura-recibo com os dados necessários para reembolso. Confirme as condições da sua apólice connosco antes da primeira consulta.",
+      "Ótimo — os seus tratamentos podem ter reembolso. A clínica dispõe de um médico fisiatra que garante a avaliação e prescrição necessárias aos seus tratamentos e ao respetivo reembolso. Emitimos fatura-recibo com todos os dados necessários; confirme as condições da sua apólice connosco antes da primeira consulta.",
   },
   {
     question: "Quantas sessões vou precisar?",
@@ -39,6 +39,6 @@ export const faqs: Faq[] = [
   {
     question: "Fazem fisioterapia ao domicílio?",
     answer:
-      "Sim, na zona de Lisboa, para quem não se pode deslocar à clínica. Levamos o material necessário e mantemos o mesmo registo clínico e acompanhamento da equipa.",
+      "Sim, na zona de Castelo Branco, para quem não se pode deslocar à clínica. Levamos o material necessário e mantemos o mesmo registo clínico e acompanhamento da equipa.",
   },
 ];

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
+import { LogoMark } from "@/components/ui/Logo";
 import { cn } from "@/lib/utils";
 import { EASE_CALM } from "@/lib/motion";
 
@@ -50,10 +51,10 @@ export function Header() {
       <div className="container-site flex h-16 items-center justify-between lg:h-[4.5rem]">
         <Link
           href="/"
-          className="flex items-baseline gap-1.5 text-[1.0625rem] font-semibold tracking-tight text-ink"
+          className="flex items-center gap-2.5 text-[1.0625rem] font-semibold tracking-tight text-ink"
           aria-label="Clínica Marques dos Santos — página inicial"
         >
-          <span className="inline-block size-2 translate-y-px rounded-full bg-azure-500" aria-hidden />
+          <LogoMark className="size-7" />
           Marques dos Santos
         </Link>
 

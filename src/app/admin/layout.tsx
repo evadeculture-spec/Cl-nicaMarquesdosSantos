@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { AdminNav } from "@/components/admin/AdminNav";
+import { LogoMark } from "@/components/ui/Logo";
 import { Badge } from "@/components/ui/Badge";
 
 export const metadata: Metadata = {
@@ -18,12 +19,12 @@ export default function AdminLayout({
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="flex items-baseline gap-1.5 font-semibold tracking-tight text-ink"
+              className="flex items-center gap-2.5 font-semibold tracking-tight text-ink"
             >
-              <span className="inline-block size-2 translate-y-px rounded-full bg-azure-500" aria-hidden />
+              <LogoMark className="size-6" />
               Marques dos Santos
             </Link>
-            <Badge tone="azure">Admin</Badge>
+            <Badge tone="gold">Admin</Badge>
           </div>
           <Link href="/" className="text-sm text-slate transition-colors hover:text-ink">
             Voltar ao site

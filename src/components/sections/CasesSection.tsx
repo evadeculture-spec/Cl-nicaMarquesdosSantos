@@ -20,7 +20,7 @@ export function CasesSection({ limit = 2 }: { limit?: number }) {
             <StaggerItem key={c.id}>
               <article className="flex h-full flex-col rounded-2xl border border-line bg-white p-8 shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:shadow-lift lg:p-10">
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge tone="azure">{c.specialty}</Badge>
+                  <Badge tone="gold">{c.specialty}</Badge>
                   <Badge>{c.age}</Badge>
                   <Badge>{c.duration}</Badge>
                 </div>

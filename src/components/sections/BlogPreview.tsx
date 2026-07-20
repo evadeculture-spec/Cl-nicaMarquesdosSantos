@@ -19,10 +19,10 @@ export function BlogPreview() {
           <StaggerItem key={post.slug} className="h-full">
             <Link
               href={`/blog/${post.slug}`}
-              className="group flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:border-azure-200/70 hover:shadow-lift"
+              className="group flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:border-gold-200/70 hover:shadow-lift"
             >
               <div className="flex items-center gap-3 text-xs text-muted">
-                <Badge tone="azure">{post.category}</Badge>
+                <Badge tone="gold">{post.category}</Badge>
                 <span>{post.readingMinutes} min de leitura</span>
               </div>
               <h3 className="mt-4 flex-1 text-lg font-semibold leading-snug tracking-tight text-ink">
@@ -33,7 +33,7 @@ export function BlogPreview() {
                 <time dateTime={post.date} className="text-muted">
                   {formatDatePt(post.date)}
                 </time>
-                <span className="flex items-center gap-1 font-medium text-azure-600">
+                <span className="flex items-center gap-1 font-medium text-gold-600">
                   Ler
                   <ArrowUpRight
                     className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

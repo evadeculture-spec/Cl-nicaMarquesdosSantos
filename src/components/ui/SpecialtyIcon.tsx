@@ -1,27 +1,21 @@
 import {
   Activity,
-  Baby,
   Brain,
-  Dumbbell,
-  Flower2,
+  Footprints,
   Hand,
   Heart,
-  HeartPulse,
-  Smile,
+  MessageSquareText,
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
 const icons: Record<string, LucideIcon> = {
   Activity,
-  Baby,
   Brain,
-  Dumbbell,
-  Flower2,
+  Footprints,
   Hand,
   Heart,
-  HeartPulse,
-  Smile,
+  MessageSquareText,
   Sparkles,
 };
 

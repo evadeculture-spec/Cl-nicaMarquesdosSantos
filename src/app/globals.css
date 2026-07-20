@@ -2,38 +2,40 @@
 
 /* ---------------------------------------------------------------------------
    Design tokens — Clínica Marques dos Santos
-   Muito branco, muito espaço, azul suave, verde subtil.
+   Identidade da marca (Instagram @clinicamarquesdossantos):
+   dourado champanhe + creme + branco. Muito espaço, muita calma.
 --------------------------------------------------------------------------- */
 @theme {
-  /* Paleta */
+  /* Paleta — dourado da marca com tons AA para texto/ação */
   --color-canvas: #ffffff;
-  --color-mist: #f7f9fb; /* cinza muito claro, com um sopro de azul */
-  --color-cloud: #eef2f6;
-  --color-line: #e4e9ef;
-  --color-ink: #0e1726; /* quase-preto azulado — nunca preto puro */
-  --color-slate: #43506b; /* texto secundário, contraste AA sobre branco */
-  --color-muted: #5f6b85; /* texto terciário, ainda AA */
-  --color-azure-50: #f0f6fd;
-  --color-azure-100: #dcebfa;
-  --color-azure-200: #bcd9f5;
-  --color-azure-500: #3b7dd8; /* azul suave — ação */
-  --color-azure-600: #2563b8; /* AA sobre branco */
-  --color-azure-700: #1d4f96;
-  --color-sage-100: #e5f3ea;
-  --color-sage-600: #2e7d54; /* verde subtil — sucesso, AA */
-  --color-sage-700: #256a47;
+  --color-mist: #f9f7f0; /* creme muito claro — fundo de secções */
+  --color-cloud: #f1ecdc;
+  --color-line: #e6e0cb;
+  --color-ink: #221e12; /* quase-preto quente — nunca preto puro */
+  --color-slate: #5c5640; /* texto secundário, AA sobre branco */
+  --color-muted: #746c52; /* texto terciário, ainda AA */
+  --color-gold-50: #fbf8ee;
+  --color-gold-100: #f4eeda;
+  --color-gold-200: #e6daae;
+  --color-gold-500: #bca95f; /* dourado da marca — decorativo */
+  --color-gold-600: #75672c; /* dourado escuro — ação, AA sobre branco */
+  --color-gold-700: #5d5223;
+  --color-sage-100: #ebf0e1;
+  --color-sage-600: #4f6b39; /* verde subtil — sucesso, AA */
+  --color-sage-700: #415a2e;
 
   /* Tipografia */
   --font-sans: var(--font-inter), "Satoshi", -apple-system, "SF Pro Text",
     "SF Pro Display", system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), "Times New Roman", serif;
 
   /* Movimento — uma única respiração para todo o site */
   --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-glide: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Sombra — difusa, nunca dura */
-  --shadow-soft: 0 1px 2px rgb(14 23 38 / 0.04), 0 8px 24px rgb(14 23 38 / 0.05);
-  --shadow-lift: 0 2px 4px rgb(14 23 38 / 0.05), 0 16px 48px rgb(14 23 38 / 0.09);
+  /* Sombra — difusa e quente, nunca dura */
+  --shadow-soft: 0 1px 2px rgb(34 30 18 / 0.04), 0 8px 24px rgb(34 30 18 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(34 30 18 / 0.05), 0 16px 48px rgb(34 30 18 / 0.09);
 
   /* Raio */
   --radius-xl: 1.25rem;
@@ -57,13 +59,13 @@ body {
 }
 
 ::selection {
-  background: var(--color-azure-100);
-  color: var(--color-azure-700);
+  background: var(--color-gold-100);
+  color: var(--color-gold-700);
 }
 
 /* Foco visível — anel calmo, nunca o outline por omissão do browser */
 :focus-visible {
-  outline: 2px solid var(--color-azure-500);
+  outline: 2px solid var(--color-gold-600);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -100,6 +102,14 @@ body {
   text-wrap: balance;
 }
 
+/* Acento editorial da marca — itálico serifado, como nos posts do Instagram */
+@utility text-brand-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
 @utility glass {
   background: rgb(255 255 255 / 0.72);
   backdrop-filter: blur(20px) saturate(1.4);
@@ -111,13 +121,13 @@ body {
   border-color: var(--color-line);
 }
 
-/* Gradiente sereno do hero — substitui vídeo/WebGL com custo quase nulo */
+/* Campo dourado sereno do hero — a marca em gradiente, custo quase nulo */
 @utility hero-field {
   background:
-    radial-gradient(56rem 36rem at 82% 8%, rgb(188 217 245 / 0.55), transparent 64%),
-    radial-gradient(44rem 30rem at 8% 82%, rgb(229 243 234 / 0.6), transparent 62%),
-    radial-gradient(60rem 44rem at 50% 110%, rgb(240 246 253 / 0.9), transparent 70%),
-    linear-gradient(180deg, #ffffff 0%, #fbfdfe 100%);
+    radial-gradient(56rem 36rem at 82% 8%, rgb(230 218 174 / 0.5), transparent 64%),
+    radial-gradient(44rem 30rem at 8% 82%, rgb(244 238 218 / 0.7), transparent 62%),
+    radial-gradient(60rem 44rem at 50% 110%, rgb(251 248 238 / 0.9), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #fdfcf7 100%);
 }
 
 /* ---------------------------------------------------------------------------

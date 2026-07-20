@@ -14,7 +14,7 @@ export const clinicalCases: ClinicalCase[] = [
   {
     id: "lombalgia-cronica",
     title: "Da dor diária à corrida de 10 km",
-    specialty: "Dor lombar",
+    specialty: "Fisioterapia",
     age: "42 anos",
     duration: "10 semanas",
     problem:
@@ -28,7 +28,7 @@ export const clinicalCases: ClinicalCase[] = [
   {
     id: "lca-futebol",
     title: "Regresso à competição após rotura do LCA",
-    specialty: "Lesões desportivas",
+    specialty: "Fisioterapia",
     age: "24 anos",
     duration: "9 meses",
     problem:
@@ -42,7 +42,7 @@ export const clinicalCases: ClinicalCase[] = [
   {
     id: "avc-marcha",
     title: "Voltar a caminhar até ao café",
-    specialty: "Neurológica",
+    specialty: "Fisioterapia",
     age: "68 anos",
     duration: "6 meses",
     problem:
@@ -56,7 +56,7 @@ export const clinicalCases: ClinicalCase[] = [
   {
     id: "pos-parto-diastase",
     title: "Recuperação funcional pós-parto",
-    specialty: "Saúde da mulher",
+    specialty: "Reabilitação Perineal",
     age: "34 anos",
     duration: "12 semanas",
     problem:

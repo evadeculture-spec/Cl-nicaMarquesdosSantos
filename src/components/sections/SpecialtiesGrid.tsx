@@ -13,17 +13,17 @@ export function SpecialtiesGrid({ limit }: { limit?: number }) {
       <div className="container-site">
         <SectionHeading
           eyebrow="Especialidades"
-          title="Da dor lombar à saúde da mulher, cobrimos o corpo inteiro."
-          lead="Dez áreas clínicas, uma equipa com formação avançada em cada uma delas. Escolha a sua — ou fale connosco e ajudamos a perceber por onde começar."
+          title="Da fisioterapia à psicologia, cuidamos da pessoa inteira."
+          lead="Sete valências principais e mais de vinte consultas de especialidade e serviços num só espaço. Escolha a sua — ou fale connosco e ajudamos a perceber por onde começar."
         />
         <Stagger className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
           {items.map((s) => (
             <StaggerItem key={s.slug}>
               <Link
                 href={`/especialidades/${s.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:border-azure-200/70 hover:shadow-lift"
+                className="group flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:border-gold-200/70 hover:shadow-lift"
               >
-                <span className="flex size-11 items-center justify-center rounded-xl bg-azure-50 text-azure-600 transition-colors duration-500 group-hover:bg-azure-100">
+                <span className="flex size-11 items-center justify-center rounded-xl bg-gold-50 text-gold-600 transition-colors duration-500 group-hover:bg-gold-100">
                   <SpecialtyIcon name={s.icon} className="size-5" />
                 </span>
                 <h3 className="mt-5 flex items-center gap-1.5 text-lg font-semibold tracking-tight text-ink">

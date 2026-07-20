@@ -10,9 +10,9 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-azure-600 text-white shadow-soft hover:bg-azure-700 hover:shadow-lift hover:-translate-y-px",
+    "bg-gold-600 text-white shadow-soft hover:bg-gold-700 hover:shadow-lift hover:-translate-y-px",
   secondary:
-    "bg-white text-ink border border-line shadow-soft hover:border-azure-200 hover:shadow-lift hover:-translate-y-px",
+    "bg-white text-ink border border-line shadow-soft hover:border-gold-200 hover:shadow-lift hover:-translate-y-px",
   ghost: "text-slate hover:text-ink hover:bg-mist",
 };
 

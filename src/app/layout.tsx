@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import { clinic } from "@/content/clinic";
 import { jsonLd, medicalBusinessSchema } from "@/lib/seo";
 import "./globals.css";
@@ -10,21 +10,30 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// Acento editorial da marca — itálico serifado como nos materiais do Instagram
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  display: "swap",
+  style: ["italic"],
+  weight: ["500", "600"],
+  variable: "--font-cormorant",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(clinic.url),
   title: {
-    default: `${clinic.name} — Fisioterapia em Lisboa`,
+    default: `${clinic.name} — Fisioterapia e Osteopatia em Castelo Branco`,
     template: `%s · ${clinic.name}`,
   },
   description: clinic.description,
   keywords: [
-    "fisioterapia Lisboa",
-    "fisioterapeuta",
-    "dor lombar",
-    "dor cervical",
-    "lesões desportivas",
-    "osteopatia",
-    "pilates clínico",
+    "fisioterapia Castelo Branco",
+    "osteopatia Castelo Branco",
+    "reabilitação perineal",
+    "reabilitação estética",
+    "podoposturologia",
+    "terapia da fala",
+    "psicologia Castelo Branco",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -32,12 +41,12 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     url: clinic.url,
     siteName: clinic.name,
-    title: `${clinic.name} — Fisioterapia em Lisboa`,
+    title: `${clinic.name} — Fisioterapia e Osteopatia em Castelo Branco`,
     description: clinic.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${clinic.name} — Fisioterapia em Lisboa`,
+    title: `${clinic.name} — Fisioterapia e Osteopatia em Castelo Branco`,
     description: clinic.description,
   },
   robots: { index: true, follow: true },
@@ -54,7 +63,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-PT" className={inter.variable}>
+    <html lang="pt-PT" className={`${inter.variable} ${cormorant.variable}`}>
       <body className="min-h-svh font-sans antialiased">
         <a
           href="#conteudo"

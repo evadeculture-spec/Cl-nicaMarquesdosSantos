@@ -22,12 +22,12 @@ export function TreatmentsSection() {
             <StaggerItem key={t.id} className="h-full">
               <article
                 className={`flex h-full flex-col rounded-2xl border bg-white p-7 shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:shadow-lift ${
-                  t.highlight ? "border-azure-200 ring-4 ring-azure-50" : "border-line"
+                  t.highlight ? "border-gold-200 ring-4 ring-gold-50" : "border-line"
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="text-lg font-semibold tracking-tight text-ink">{t.name}</h3>
-                  {t.highlight && <Badge tone="azure">Começa aqui</Badge>}
+                  {t.highlight && <Badge tone="gold">Começa aqui</Badge>}
                 </div>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-slate">{t.description}</p>
                 <div className="mt-6 flex items-baseline justify-between border-t border-line pt-5">

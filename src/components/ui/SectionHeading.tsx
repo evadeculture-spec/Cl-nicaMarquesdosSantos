@@ -28,7 +28,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <Badge tone="azure" className="mb-5">
+        <Badge tone="gold" className="mb-5">
           {eyebrow}
         </Badge>
       )}

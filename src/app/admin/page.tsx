@@ -60,7 +60,7 @@ export default function AdminDashboard() {
                 <span className="w-8 text-sm text-muted">{d.day}</span>
                 <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-cloud">
                   <div
-                    className="h-full rounded-full bg-azure-500 transition-all duration-1000 ease-[var(--ease-calm)]"
+                    className="h-full rounded-full bg-gold-500 transition-all duration-1000 ease-[var(--ease-calm)]"
                     style={{ width: `${d.pct}%` }}
                   />
                 </div>

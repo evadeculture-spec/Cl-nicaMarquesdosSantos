@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/Badge";
 import { adminDemo as a } from "@/content/admin-demo";
 import { formatDatePt } from "@/lib/utils";
 
-const tones = { ativo: "azure", novo: "sage", alta: "neutral" } as const;
+const tones = { ativo: "gold", novo: "sage", alta: "neutral" } as const;
 
 export default function AdminPacientes() {
   return (

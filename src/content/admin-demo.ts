@@ -32,12 +32,12 @@ export const adminDemo = {
     { time: "18:00", patient: "Margarida Silva", treatment: "Sessão de Fisioterapia", professional: "João M. Santos", status: "confirmada" },
   ] satisfies Appointment[] as Appointment[],
   patients: [
-    { name: "Margarida Silva", specialty: "Dor lombar", sessions: "9/12", lastVisit: "2026-07-17", status: "ativo" },
-    { name: "Rui Carvalho", specialty: "Lesões desportivas", sessions: "1/—", lastVisit: "2026-07-20", status: "novo" },
-    { name: "Beatriz Sousa", specialty: "Saúde da mulher", sessions: "4/8", lastVisit: "2026-07-15", status: "ativo" },
+    { name: "Margarida Silva", specialty: "Fisioterapia", sessions: "9/12", lastVisit: "2026-07-17", status: "ativo" },
+    { name: "Rui Carvalho", specialty: "Fisioterapia", sessions: "1/—", lastVisit: "2026-07-20", status: "novo" },
+    { name: "Beatriz Sousa", specialty: "Reabilitação Perineal", sessions: "4/8", lastVisit: "2026-07-15", status: "ativo" },
     { name: "António Reis", specialty: "Osteopatia", sessions: "3/—", lastVisit: "2026-07-08", status: "ativo" },
-    { name: "Carlos Antunes", specialty: "Neurológica", sessions: "34/—", lastVisit: "2026-07-18", status: "ativo" },
-    { name: "Teresa Marques", specialty: "Dor cervical", sessions: "6/6", lastVisit: "2026-07-11", status: "alta" },
+    { name: "Carlos Antunes", specialty: "Fisioterapia", sessions: "34/—", lastVisit: "2026-07-18", status: "ativo" },
+    { name: "Teresa Marques", specialty: "Osteopatia", sessions: "6/6", lastVisit: "2026-07-11", status: "alta" },
   ] satisfies PatientRow[] as PatientRow[],
   weeklyLoad: [
     { day: "Seg", pct: 92 },
@@ -48,10 +48,10 @@ export const adminDemo = {
     { day: "Sáb", pct: 64 },
   ],
   revenueBySpecialty: [
-    { name: "Fisioterapia geral", value: 12400 },
-    { name: "Lesões desportivas", value: 5900 },
-    { name: "Saúde da mulher", value: 4100 },
+    { name: "Fisioterapia", value: 12400 },
+    { name: "Osteopatia", value: 5900 },
+    { name: "Reabilitação perineal", value: 4100 },
     { name: "Pilates clínico", value: 3250 },
-    { name: "Osteopatia", value: 2800 },
+    { name: "Outros serviços", value: 2800 },
   ],
 };

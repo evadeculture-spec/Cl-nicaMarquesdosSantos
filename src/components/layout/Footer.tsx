@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoMark } from "@/components/ui/Logo";
 import { clinic } from "@/content/clinic";
 import { specialties } from "@/content/specialties";
 
@@ -40,14 +41,17 @@ export function Footer() {
           <div className="max-w-sm">
             <Link
               href="/"
-              className="flex items-baseline gap-1.5 text-lg font-semibold tracking-tight text-ink"
+              className="flex items-center gap-2.5 text-lg font-semibold tracking-tight text-ink"
             >
-              <span className="inline-block size-2 translate-y-px rounded-full bg-azure-500" aria-hidden />
+              <LogoMark className="size-7" />
               {clinic.shortName}
             </Link>
+            <p className="mt-2 text-xs uppercase tracking-widest text-muted">
+              Fisioterapia, osteopatia e outras especialidades médicas
+            </p>
             <p className="mt-4 text-sm leading-relaxed text-slate">
-              {clinic.tagline} Desde 2007, em Lisboa, com uma regra que nunca
-              mudou: uma pessoa, um fisioterapeuta, uma hora inteira.
+              {clinic.tagline} Em Castelo Branco, com uma regra que nunca
+              muda: uma pessoa, um profissional, todo o tempo necessário.
             </p>
             <address className="mt-6 space-y-1.5 text-sm not-italic text-slate">
               <p>{clinic.address.street}</p>
@@ -57,7 +61,7 @@ export function Footer() {
               <p className="pt-2">
                 <a
                   href={`tel:${clinic.phoneHref}`}
-                  className="text-azure-600 transition-colors hover:text-azure-700"
+                  className="text-gold-600 transition-colors hover:text-gold-700"
                 >
                   {clinic.phone}
                 </a>
@@ -65,7 +69,7 @@ export function Footer() {
               <p>
                 <a
                   href={`mailto:${clinic.email}`}
-                  className="text-azure-600 transition-colors hover:text-azure-700"
+                  className="text-gold-600 transition-colors hover:text-gold-700"
                 >
                   {clinic.email}
                 </a>

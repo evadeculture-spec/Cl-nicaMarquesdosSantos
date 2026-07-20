@@ -34,16 +34,13 @@ function triage(input: string): Message {
 
   const matches: { specialty: (typeof specialties)[number]; score: number }[] = [];
   const keywordMap: Record<string, string[]> = {
-    "dor-lombar": ["lombar", "costas", "fundo das costas", "ciática", "ciatica", "rins"],
-    "dor-cervical": ["pescoço", "pescoco", "cervical", "cabeça", "cabeca", "enxaqueca", "trapézio", "trapezio"],
-    "lesoes-desportivas": ["desporto", "correr", "corrida", "futebol", "ginásio", "ginasio", "entorse", "tendinite", "joelho", "ombro"],
-    "pos-operatorio": ["cirurgia", "operação", "operacao", "operado", "prótese", "protese", "ligamento"],
-    "atm": ["mandíbula", "mandibula", "maxilar", "mastigar", "bruxismo"],
-    "neurologica": ["avc", "parkinson", "esclerose", "equilíbrio", "equilibrio", "tonturas"],
-    "pediatrica": ["bebé", "bebe", "filho", "filha", "criança", "crianca", "torcicolo"],
-    "saude-da-mulher": ["gravidez", "grávida", "gravida", "parto", "pélvica", "pelvica", "incontinência", "incontinencia", "diástase", "diastase"],
-    "pilates-clinico": ["pilates", "postura", "prevenção", "prevencao", "fortalecer"],
-    "osteopatia": ["osteopatia", "osteopata", "tensões", "tensoes", "corpo todo"],
+    "fisioterapia": ["lombar", "costas", "cervical", "pescoço", "pescoco", "joelho", "ombro", "entorse", "tendinite", "desporto", "corrida", "cirurgia", "operado", "prótese", "protese", "ligamento", "dor"],
+    "osteopatia": ["osteopatia", "osteopata", "tensões", "tensoes", "corpo todo", "enxaqueca", "postural"],
+    "reabilitacao-perineal": ["gravidez", "grávida", "gravida", "parto", "pélvica", "pelvica", "perineal", "incontinência", "incontinencia", "diástase", "diastase", "urina"],
+    "reabilitacao-estetica": ["estética", "estetica", "cicatriz", "drenagem", "linfática", "linfatica", "edema", "pós-cirurgia estética"],
+    "podoposturologia": ["pés", "pes", "pé", "palmilha", "apoio", "postura", "pisada"],
+    "terapia-da-fala": ["fala", "linguagem", "gaguez", "engolir", "deglutição", "degluticao", "comunicação", "comunicacao"],
+    "psicologia": ["ansiedade", "stress", "psicólogo", "psicologo", "psicologia", "emocional", "dormir", "depressão", "depressao"],
   };
 
   for (const s of specialties) {
@@ -65,7 +62,7 @@ function triage(input: string): Message {
   if (t.includes("preço") || t.includes("preco") || t.includes("custa") || t.includes("valor")) {
     return {
       role: "assistant",
-      text: "A avaliação inicial custa 55€ (60 minutos) e as sessões de fisioterapia 45€ (45 minutos). Trabalhamos com os principais seguros e emitimos fatura-recibo para reembolso.",
+      text: "A avaliação inicial custa 40€ (60 minutos) e as sessões de fisioterapia 35€. Trabalhamos com os principais seguros e emitimos fatura-recibo para reembolso.",
       cta: { href: "/tratamentos", label: "Ver todos os preços" },
     };
   }
@@ -73,7 +70,7 @@ function triage(input: string): Message {
   if (t.includes("horário") || t.includes("horario") || t.includes("aberto") || t.includes("fecha")) {
     return {
       role: "assistant",
-      text: `Estamos abertos de segunda a sexta das 08:00 às 20:00 e ao sábado das 09:00 às 13:00. Pode marcar online a qualquer hora — confirmamos em ${clinic.metrics.responseMinutes} minutos, em horário de clínica.`,
+      text: `Estamos abertos de segunda a sexta das 09:00 às 20:00 e ao sábado das 09:00 às 13:00. Pode marcar online a qualquer hora — confirmamos em ${clinic.metrics.responseMinutes} minutos, em horário de clínica.`,
       cta: { href: "/marcar", label: "Marcar consulta" },
     };
   }
@@ -133,7 +130,7 @@ export function AssistantWidget() {
         aria-expanded={open}
         aria-controls="assistant-panel"
         aria-label={open ? "Fechar assistente" : "Abrir assistente digital"}
-        className="fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-azure-600 text-white shadow-lift transition-all duration-500 ease-[var(--ease-calm)] hover:scale-105 hover:bg-azure-700 active:scale-95"
+        className="fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-gold-600 text-white shadow-lift transition-all duration-500 ease-[var(--ease-calm)] hover:scale-105 hover:bg-gold-700 active:scale-95"
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
@@ -174,7 +171,7 @@ export function AssistantWidget() {
                     className={cn(
                       "max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
                       m.role === "user"
-                        ? "rounded-br-md bg-azure-600 text-white"
+                        ? "rounded-br-md bg-gold-600 text-white"
                         : "rounded-bl-md bg-mist text-ink",
                     )}
                   >
@@ -182,7 +179,7 @@ export function AssistantWidget() {
                     {m.cta && (
                       <Link
                         href={m.cta.href}
-                        className="mt-3 inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-xs font-medium text-azure-700 shadow-soft transition-transform hover:scale-[1.02]"
+                        className="mt-3 inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-xs font-medium text-gold-700 shadow-soft transition-transform hover:scale-[1.02]"
                       >
                         {m.cta.label}
                       </Link>
@@ -221,13 +218,13 @@ export function AssistantWidget() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Descreva o que sente…"
-                className="h-11 flex-1 rounded-full border border-line bg-mist/50 px-4 text-sm text-ink placeholder:text-muted/70 focus:border-azure-500 focus:outline-none"
+                className="h-11 flex-1 rounded-full border border-line bg-mist/50 px-4 text-sm text-ink placeholder:text-muted/70 focus:border-gold-500 focus:outline-none"
               />
               <button
                 type="submit"
                 aria-label="Enviar mensagem"
                 disabled={!input.trim() || thinking}
-                className="flex size-11 shrink-0 items-center justify-center rounded-full bg-azure-600 text-white transition-all duration-300 hover:bg-azure-700 disabled:opacity-40"
+                className="flex size-11 shrink-0 items-center justify-center rounded-full bg-gold-600 text-white transition-all duration-300 hover:bg-gold-700 disabled:opacity-40"
               >
                 <Send className="size-4" aria-hidden />
               </button>

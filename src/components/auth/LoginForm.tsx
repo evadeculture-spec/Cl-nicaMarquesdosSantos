@@ -46,7 +46,7 @@ export function LoginForm() {
       transition={{ duration: 0.8, ease: EASE_CALM }}
       className="w-full max-w-md rounded-3xl border border-line bg-white p-10 shadow-lift"
     >
-      <span className="flex size-12 items-center justify-center rounded-2xl bg-azure-50 text-azure-600">
+      <span className="flex size-12 items-center justify-center rounded-2xl bg-gold-50 text-gold-600">
         <LockKeyhole className="size-5" aria-hidden />
       </span>
       <h1 className="text-display mt-6 text-3xl text-ink">Área do paciente</h1>

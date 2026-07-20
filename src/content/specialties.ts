@@ -9,116 +9,84 @@ export type Specialty = {
   icon: string; // nome do ícone lucide
 };
 
+/** Valências reais da Clínica Marques dos Santos (Castelo Branco). */
 export const specialties: Specialty[] = [
   {
-    slug: "dor-lombar",
-    name: "Dor Lombar",
-    short: "Alívio duradouro para a dor mais comum do mundo.",
+    slug: "fisioterapia",
+    name: "Fisioterapia",
+    short: "Recuperar o movimento, sem pressa e com plano.",
     description:
-      "A dor lombar afeta 8 em cada 10 pessoas ao longo da vida. Avaliamos a origem real da dor — mecânica, postural ou neurológica — e construímos um plano que combina terapia manual, exercício terapêutico e educação para prevenir recidivas.",
-    symptoms: ["Dor ao levantar ou sentar", "Rigidez matinal", "Dor que irradia para a perna", "Limitação nos movimentos do dia a dia"],
-    approach: "Terapia manual, exercício terapêutico progressivo e reeducação postural, com reavaliações objetivas a cada 4 sessões.",
+      "Da dor lombar e cervical às lesões desportivas e recuperação pós-operatória: avaliamos a origem real do problema e construímos um plano que combina terapia manual, exercício terapêutico e educação — com reavaliações objetivas ao longo do caminho.",
+    symptoms: ["Dor lombar ou cervical", "Lesões desportivas e entorses", "Recuperação pós-cirúrgica", "Tendinopatias e dor articular"],
+    approach: "Terapia manual, exercício terapêutico progressivo e reeducação do movimento, com reavaliações a cada 4 sessões.",
     sessions: "6–12 sessões, na maioria dos casos",
     icon: "Activity",
-  },
-  {
-    slug: "dor-cervical",
-    name: "Dor Cervical",
-    short: "Pescoço livre, cabeça leve.",
-    description:
-      "Tensão cervical, cefaleias de origem cervical e limitações de mobilidade têm frequentemente origem em postura prolongada e stress. Tratamos a causa, não apenas o sintoma.",
-    symptoms: ["Tensão no pescoço e trapézios", "Dores de cabeça frequentes", "Formigueiro nos braços", "Estalidos e rigidez"],
-    approach: "Mobilização articular, técnicas de tecidos moles, fortalecimento profundo do pescoço e ergonomia do posto de trabalho.",
-    sessions: "4–10 sessões, na maioria dos casos",
-    icon: "Brain",
-  },
-  {
-    slug: "lesoes-desportivas",
-    name: "Lesões Desportivas",
-    short: "Regressar ao desporto melhor do que antes.",
-    description:
-      "De entorses a roturas musculares, acompanhamos atletas amadores e federados com protocolos de retorno ao desporto baseados em critérios objetivos — não em datas no calendário.",
-    symptoms: ["Entorses e distensões", "Tendinopatias", "Dor no joelho ou ombro do atleta", "Recuperação incompleta de lesão antiga"],
-    approach: "Reabilitação por fases com testes de força e controlo motor, exposição gradual à carga e prevenção de recidiva.",
-    sessions: "Programa por fases, definido na avaliação",
-    icon: "Dumbbell",
-  },
-  {
-    slug: "pos-operatorio",
-    name: "Pós-Operatório",
-    short: "Recuperação orientada, desde o primeiro dia.",
-    description:
-      "Depois de uma cirurgia ortopédica — prótese, ligamentoplastia, artroscopia — cada semana conta. Trabalhamos em articulação com o cirurgião para cumprir cada marco da recuperação com segurança.",
-    symptoms: ["Prótese de anca ou joelho", "Ligamentoplastia (LCA)", "Cirurgia ao ombro ou coluna", "Rigidez e perda de força pós-cirúrgica"],
-    approach: "Protocolos por fases alinhados com a equipa cirúrgica, controlo de dor e edema, e recuperação progressiva de mobilidade e força.",
-    sessions: "Programa contínuo, tipicamente 8–24 semanas",
-    icon: "HeartPulse",
   },
   {
     slug: "osteopatia",
     name: "Osteopatia",
     short: "O corpo como um todo.",
     description:
-      "Abordagem global que avalia como as diferentes regiões do corpo se influenciam. Indicada para disfunções mecânicas persistentes que não respondem a abordagens localizadas.",
+      "Abordagem global que avalia como as diferentes regiões do corpo se influenciam entre si. Indicada para disfunções mecânicas persistentes que não respondem a abordagens localizadas.",
     symptoms: ["Dores recorrentes sem causa clara", "Tensões generalizadas", "Desconforto postural crónico", "Disfunções articulares"],
-    approach: "Avaliação osteopática completa e técnicas manuais estruturais, com integração no plano de fisioterapia quando indicado.",
+    approach: "Avaliação osteopática completa e técnicas manuais estruturais, integradas com o plano de fisioterapia quando indicado.",
     sessions: "Sessões espaçadas, reavaliadas caso a caso",
     icon: "Hand",
   },
   {
-    slug: "pilates-clinico",
-    name: "Pilates Clínico",
-    short: "Força de dentro para fora.",
+    slug: "reabilitacao-perineal",
+    name: "Reabilitação Perineal",
+    short: "No homem e na mulher, sem tabus.",
     description:
-      "Pilates conduzido por fisioterapeutas, em grupos de máximo 4 pessoas ou individual. Ideal para consolidar ganhos de tratamento, prevenir dor lombar e melhorar controlo postural.",
-    symptoms: ["Prevenção de dor de costas", "Fraqueza do core", "Pós-tratamento de coluna", "Gravidez e pós-parto (adaptado)"],
-    approach: "Aulas com progressões individualizadas, equipamento de estúdio e integração com o plano clínico de cada pessoa.",
-    sessions: "Aulas regulares, 1–3× por semana",
-    icon: "Flower2",
-  },
-  {
-    slug: "atm",
-    name: "ATM e Dor Orofacial",
-    short: "Quando a mandíbula fala mais alto.",
-    description:
-      "Disfunções da articulação temporomandibular causam dor ao mastigar, estalidos, bruxismo e dores de cabeça. Tratamos em articulação com medicina dentária quando necessário.",
-    symptoms: ["Dor ou estalidos ao abrir a boca", "Bruxismo", "Dor de cabeça e face", "Bloqueio mandibular"],
-    approach: "Terapia manual intra e extra-oral, exercícios de controlo motor mandibular e gestão de hábitos parafuncionais.",
-    sessions: "4–8 sessões, na maioria dos casos",
-    icon: "Smile",
-  },
-  {
-    slug: "neurologica",
-    name: "Fisioterapia Neurológica",
-    short: "Reaprender o movimento, passo a passo.",
-    description:
-      "Reabilitação após AVC, na doença de Parkinson, esclerose múltipla e outras condições neurológicas. Trabalho intensivo, funcional e centrado nos objetivos de vida de cada pessoa.",
-    symptoms: ["Recuperação pós-AVC", "Doença de Parkinson", "Esclerose múltipla", "Alterações de equilíbrio e marcha"],
-    approach: "Treino funcional intensivo orientado a tarefas, treino de equilíbrio e marcha, e envolvimento ativo da família.",
-    sessions: "Programa contínuo com objetivos trimestrais",
-    icon: "Sparkles",
-  },
-  {
-    slug: "pediatrica",
-    name: "Fisioterapia Pediátrica",
-    short: "Crescer com confiança no movimento.",
-    description:
-      "Acompanhamento do desenvolvimento motor de bebés e crianças — do torcicolo congénito ao atraso de desenvolvimento — num ambiente pensado para os mais pequenos.",
-    symptoms: ["Torcicolo congénito", "Atraso no desenvolvimento motor", "Alterações da marcha", "Postura na infância e adolescência"],
-    approach: "Intervenção baseada no brincar, capacitação dos pais com planos para casa e articulação com pediatra.",
-    sessions: "Definido na avaliação de desenvolvimento",
-    icon: "Baby",
-  },
-  {
-    slug: "saude-da-mulher",
-    name: "Saúde da Mulher",
-    short: "Cuidado especializado em cada fase.",
-    description:
-      "Fisioterapia pélvica e acompanhamento na gravidez, pós-parto e menopausa. Um espaço reservado, sem pressa e sem tabus, com fisioterapeutas especializadas.",
-    symptoms: ["Incontinência urinária", "Dor pélvica", "Preparação para o parto", "Recuperação pós-parto e diástase"],
+      "Reabilitação do pavimento pélvico para homens e mulheres: incontinência, dor pélvica, pós-parto, pós-cirurgia urológica. Um espaço reservado, com profissionais especializados e todo o tempo do mundo.",
+    symptoms: ["Incontinência urinária", "Dor pélvica", "Recuperação pós-parto e diástase", "Pós-operatório urológico"],
     approach: "Avaliação especializada do pavimento pélvico, treino funcional específico e educação — sempre em consulta individual.",
     sessions: "6–10 sessões, na maioria dos casos",
     icon: "Heart",
+  },
+  {
+    slug: "reabilitacao-estetica",
+    name: "Reabilitação Estética",
+    short: "Cuidar da pele e dos tecidos, com base clínica.",
+    description:
+      "Drenagem linfática, tratamento de cicatrizes, recuperação pós-cirurgia estética e cuidado dos tecidos — com o rigor clínico de uma equipa de saúde, não de um salão.",
+    symptoms: ["Pós-operatório de cirurgia estética", "Cicatrizes e aderências", "Retenção de líquidos e edema", "Drenagem linfática"],
+    approach: "Técnicas manuais especializadas e plano progressivo, em articulação com o cirurgião quando aplicável.",
+    sessions: "Definido na avaliação inicial",
+    icon: "Sparkles",
+  },
+  {
+    slug: "podoposturologia",
+    name: "Podoposturologia",
+    short: "A postura começa nos pés.",
+    description:
+      "Estudo da relação entre o apoio dos pés e a postura de todo o corpo. Indicada para dores recorrentes de joelho, anca ou coluna com origem no apoio, e para otimização postural no desporto.",
+    symptoms: ["Dores de joelho, anca ou coluna recorrentes", "Alterações do apoio plantar", "Desequilíbrios posturais", "Otimização no desporto"],
+    approach: "Avaliação postural e do apoio plantar, com plano corretivo e palmilhas posturais quando indicado.",
+    sessions: "Avaliação + acompanhamento periódico",
+    icon: "Footprints",
+  },
+  {
+    slug: "terapia-da-fala",
+    name: "Terapia da Fala",
+    short: "Comunicar é viver.",
+    description:
+      "Avaliação e intervenção em perturbações da comunicação, fala, linguagem e deglutição — em crianças e adultos, com planos individuais e envolvimento da família.",
+    symptoms: ["Atrasos de linguagem na infância", "Alterações da fala e articulação", "Dificuldades de deglutição", "Reabilitação pós-AVC"],
+    approach: "Avaliação formal, plano individual e trabalho próximo com a família e a escola quando aplicável.",
+    sessions: "Programa contínuo com objetivos trimestrais",
+    icon: "MessageSquareText",
+  },
+  {
+    slug: "psicologia",
+    name: "Psicologia",
+    short: "Saúde também se trata por dentro.",
+    description:
+      "Acompanhamento psicológico para adultos e adolescentes: ansiedade, gestão de dor crónica, adaptação à lesão e à doença, e bem-estar emocional — integrado com as restantes valências da clínica.",
+    symptoms: ["Ansiedade e stress", "Dor crónica e adaptação à doença", "Dificuldades emocionais", "Acompanhamento na reabilitação"],
+    approach: "Consultas individuais com plano terapêutico definido em conjunto, em articulação com a equipa clínica quando útil.",
+    sessions: "Sessões regulares, definidas em conjunto",
+    icon: "Brain",
   },
 ];
 

@@ -5,7 +5,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "Av. da República 42, Lisboa · +351 21 000 00 00 · Seg–Sex 08h–20h, Sáb 09h–13h. Fale connosco — respondemos em 15 minutos.",
+    "Rua Doutor Francisco Robalo Guedes, R/C LT D4, Castelo Branco · +351 939 966 174 · Seg–Sex 09h–20h, Sáb 09h–13h. Fale connosco — respondemos em minutos.",
   alternates: { canonical: "/contacto" },
 };
 

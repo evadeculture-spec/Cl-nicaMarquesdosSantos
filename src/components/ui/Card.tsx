@@ -18,7 +18,7 @@ export function Card({
     <div
       className={cn(
         "rounded-2xl border border-line bg-white p-7 shadow-soft transition-all duration-500 ease-[var(--ease-calm)]",
-        hover && "hover:-translate-y-0.5 hover:shadow-lift hover:border-azure-200/70",
+        hover && "hover:-translate-y-0.5 hover:shadow-lift hover:border-gold-200/70",
         className,
       )}
     >

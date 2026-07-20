@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import type { InputHTMLAttributes, TextareaHTMLAttributes } from "react";
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-[0.9375rem] text-ink placeholder:text-muted/70 transition-all duration-300 hover:border-azure-200 focus:border-azure-500 focus:outline-none focus:ring-4 focus:ring-azure-100";
+  "w-full rounded-xl border border-line bg-white px-4 py-3 text-[0.9375rem] text-ink placeholder:text-muted/70 transition-all duration-300 hover:border-gold-200 focus:border-gold-500 focus:outline-none focus:ring-4 focus:ring-gold-100";
 
 export function Field({
   label,

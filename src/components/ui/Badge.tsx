@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 const tones = {
-  azure: "bg-azure-50 text-azure-700 border-azure-100",
+  gold: "bg-gold-50 text-gold-700 border-gold-100",
   sage: "bg-sage-100 text-sage-700 border-sage-100",
   neutral: "bg-mist text-slate border-line",
 } as const;

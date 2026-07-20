@@ -16,7 +16,7 @@ export function PageHeader({
       <div className="container-site">
         <Reveal className="max-w-3xl">
           {eyebrow && (
-            <Badge tone="azure" className="mb-6">
+            <Badge tone="gold" className="mb-6">
               {eyebrow}
             </Badge>
           )}

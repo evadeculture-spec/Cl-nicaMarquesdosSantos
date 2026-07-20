@@ -14,7 +14,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="mt-10 inline-flex h-13 items-center gap-2 rounded-full bg-azure-600 px-8 font-medium text-white shadow-soft transition-all duration-300 hover:bg-azure-700 hover:shadow-lift"
+        className="mt-10 inline-flex h-13 items-center gap-2 rounded-full bg-gold-600 px-8 font-medium text-white shadow-soft transition-all duration-300 hover:bg-gold-700 hover:shadow-lift"
       >
         <ArrowLeft className="size-4" aria-hidden />
         Voltar ao início

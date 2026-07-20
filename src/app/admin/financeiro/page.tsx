@@ -61,7 +61,7 @@ export default function AdminFinanceiro() {
                 </div>
                 <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-cloud">
                   <div
-                    className="h-full rounded-full bg-azure-500 transition-all duration-1000 ease-[var(--ease-calm)]"
+                    className="h-full rounded-full bg-gold-500 transition-all duration-1000 ease-[var(--ease-calm)]"
                     style={{ width: `${(r.value / max) * 100}%` }}
                   />
                 </div>

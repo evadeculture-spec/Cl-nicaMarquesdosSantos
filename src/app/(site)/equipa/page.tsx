@@ -6,7 +6,7 @@ import { FinalCta } from "@/components/sections/FinalCta";
 export const metadata: Metadata = {
   title: "A equipa",
   description:
-    "Fisioterapeutas com formação avançada em dor lombar, desporto, saúde da mulher, neurologia, pediatria e ATM. Conheça a equipa da Clínica Marques dos Santos.",
+    "Fisioterapeutas, osteopata, podoposturologista, terapeuta da fala e psicóloga — conheça a equipa da Clínica Marques dos Santos, em Castelo Branco.",
   alternates: { canonical: "/equipa" },
 };
 
@@ -16,7 +16,7 @@ export default function EquipaPage() {
       <PageHeader
         eyebrow="A equipa"
         title="Quem vai cuidar de si."
-        lead="Cinco fisioterapeutas, cada um com uma área de especialização profunda — e uma assistente que responde antes de o telefone tocar duas vezes."
+        lead="Uma equipa multidisciplinar — fisioterapia, osteopatia, podoposturologia, terapia da fala e psicologia — e uma assistente que responde antes de o telefone tocar duas vezes."
       />
       <TeamSection />
       <FinalCta />

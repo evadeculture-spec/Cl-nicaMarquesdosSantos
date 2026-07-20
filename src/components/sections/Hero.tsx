@@ -44,7 +44,7 @@ export function Hero() {
       {!reduce && (
         <div
           aria-hidden
-          className="animate-breathe absolute -top-32 right-[-10%] size-[42rem] rounded-full bg-azure-100/50 blur-3xl"
+          className="animate-breathe absolute -top-32 right-[-10%] size-[42rem] rounded-full bg-gold-100/50 blur-3xl"
         />
       )}
 
@@ -55,25 +55,24 @@ export function Hero() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-4 py-1.5 text-sm text-slate"
           >
             <span className="size-1.5 rounded-full bg-sage-600" aria-hidden />
-            Fisioterapia em Lisboa · desde 2007
+            Fisioterapia, Osteopatia e outras especialidades médicas
           </motion.p>
 
           <motion.h1
             {...entrance(0.15)}
             className="text-display text-balance-pretty text-[2.5rem] text-ink sm:text-6xl lg:text-[4.25rem]"
           >
-            O seu corpo sabe
-            <br />
-            voltar a estar bem.
-            <span className="text-azure-600"> Nós mostramos o caminho.</span>
+            Uma nova perspectiva{" "}
+            <span className="text-brand-accent text-gold-600">de cuidar.</span>
           </motion.h1>
 
           <motion.p
             {...entrance(0.28)}
             className="mt-7 max-w-md text-lg leading-relaxed text-slate"
           >
-            Avaliação rigorosa, uma hora inteira só para si e um plano feito à
-            medida — do primeiro dia à última sessão.
+            Em Castelo Branco, mais de vinte consultas de especialidade e
+            serviços num só espaço. Avaliação rigorosa, tempo só para si e um
+            plano feito à medida — do primeiro dia à última sessão.
           </motion.p>
 
           <motion.div {...entrance(0.4)} className="mt-10 flex flex-wrap items-center gap-4">
@@ -87,7 +86,7 @@ export function Hero() {
           </motion.div>
 
           <motion.p {...entrance(0.55)} className="mt-8 text-sm text-muted">
-            Sem necessidade de prescrição médica · Acordos com os principais seguros
+            Médico fisiatra na clínica · Reembolsos ADSE, SAMS e outros seguros de saúde
           </motion.p>
         </div>
 
@@ -97,11 +96,11 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: EASE_CALM, delay: 0.2 }}
-            className="absolute inset-0 overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-azure-50 via-white to-sage-100/60 shadow-lift"
+            className="absolute inset-0 overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-gold-50 via-white to-sage-100/60 shadow-lift"
             aria-hidden
           >
             <div className="absolute inset-x-10 top-12 space-y-4 opacity-80">
-              <div className="h-2.5 w-2/5 rounded-full bg-azure-200/70" />
+              <div className="h-2.5 w-2/5 rounded-full bg-gold-200/70" />
               <div className="h-2.5 w-3/5 rounded-full bg-cloud" />
               <div className="h-2.5 w-1/2 rounded-full bg-cloud" />
             </div>
@@ -124,12 +123,12 @@ export function Hero() {
 
           <FloatingCard className="right-[-2rem] top-[45%]" delay={0.85} drift>
             <div className="flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center rounded-xl bg-azure-50 text-azure-600">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-gold-50 text-gold-600">
                 <Sparkles className="size-5" aria-hidden />
               </span>
               <div>
-                <p className="text-lg font-semibold tracking-tight text-ink">10</p>
-                <p className="text-xs text-muted">especialidades clínicas</p>
+                <p className="text-lg font-semibold tracking-tight text-ink">7</p>
+                <p className="text-xs text-muted">valências clínicas</p>
               </div>
             </div>
           </FloatingCard>

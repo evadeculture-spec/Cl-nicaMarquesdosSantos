@@ -14,7 +14,7 @@ export default function HistoricoPage() {
           {p.history.map((h) => (
             <li key={h.date + h.treatment} className="relative">
               <span
-                className="absolute -left-[1.85rem] top-1.5 size-2.5 rounded-full border-2 border-white bg-azure-500"
+                className="absolute -left-[1.85rem] top-1.5 size-2.5 rounded-full border-2 border-white bg-gold-500"
                 aria-hidden
               />
               <time dateTime={h.date} className="text-xs font-medium uppercase tracking-wide text-muted">

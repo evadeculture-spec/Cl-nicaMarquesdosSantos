@@ -10,7 +10,7 @@ import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 export const metadata: Metadata = {
   title: "Sobre a clínica",
   description:
-    "Desde 2007 em Lisboa: sessões individuais de uma hora, planos à medida e decisões apoiadas na melhor evidência. Conheça a Clínica Marques dos Santos.",
+    "Fisioterapia, osteopatia e reabilitação em Castelo Branco: sessões individuais, planos à medida e decisões apoiadas na melhor evidência. Conheça a Clínica Marques dos Santos.",
   alternates: { canonical: "/sobre" },
 };
 
@@ -34,8 +34,8 @@ export default function SobrePage() {
     <>
       <PageHeader
         eyebrow="Sobre nós"
-        title="Uma clínica construída contra a pressa."
-        lead="Em 2007, o João Marques dos Santos saiu de uma grande clínica onde via 4 pacientes por hora. Abriu esta com uma regra simples: nunca mais. Dezoito anos depois, a regra mantém-se."
+        title="Uma nova perspectiva de cuidar."
+        lead="A Clínica Marques dos Santos nasceu em Castelo Branco para juntar, num só espaço, fisioterapia, osteopatia, reabilitação perineal e estética, podoposturologia, terapia da fala e psicologia — com uma regra simples: cada pessoa merece tempo, rigor e um plano à medida."
       />
       <About />
       <section className="bg-mist py-24 lg:py-36">
@@ -49,7 +49,7 @@ export default function SobrePage() {
             {values.map((v, i) => (
               <StaggerItem key={v.title}>
                 <div className="h-full rounded-2xl border border-line bg-white p-8 shadow-soft">
-                  <span className="text-display text-4xl text-azure-200">
+                  <span className="text-display text-4xl text-gold-200">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-4 text-xl font-semibold tracking-tight text-ink">

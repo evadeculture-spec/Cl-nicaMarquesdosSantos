@@ -45,7 +45,7 @@ export function ReadingProgress() {
     <div
       ref={ref}
       aria-hidden
-      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left scale-x-0 bg-azure-500"
+      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left scale-x-0 bg-gold-500"
     />
   );
 }

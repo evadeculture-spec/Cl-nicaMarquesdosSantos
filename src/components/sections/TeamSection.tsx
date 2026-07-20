@@ -12,7 +12,7 @@ export function TeamSection({ limit }: { limit?: number }) {
       <SectionHeading
         eyebrow="A equipa"
         title="Pessoas que sabem o nome de cada paciente."
-        lead="Fisioterapeutas com formação avançada, anos de prática e — tão importante quanto isso — tempo para si. Conheça quem vai cuidar do seu caso."
+        lead="Profissionais especializados em cada valência, anos de prática e — tão importante quanto isso — tempo para si. Conheça quem vai cuidar do seu caso."
       />
       <Stagger className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
         {members.map((m) => (
@@ -22,8 +22,8 @@ export function TeamSection({ limit }: { limit?: number }) {
                 <span
                   className={cn(
                     "flex size-14 shrink-0 items-center justify-center rounded-2xl text-lg font-semibold tracking-tight transition-transform duration-500 group-hover:scale-105",
-                    m.accent === "azure"
-                      ? "bg-azure-50 text-azure-700"
+                    m.accent === "gold"
+                      ? "bg-gold-50 text-gold-700"
                       : "bg-sage-100 text-sage-700",
                   )}
                   aria-hidden

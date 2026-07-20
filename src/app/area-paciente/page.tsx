@@ -22,7 +22,7 @@ export default function PatientHome() {
         <Card>
           <div className="flex items-center justify-between">
             <h2 className="flex items-center gap-2 font-semibold tracking-tight text-ink">
-              <CalendarDays className="size-4 text-azure-600" aria-hidden />
+              <CalendarDays className="size-4 text-gold-600" aria-hidden />
               Próxima consulta
             </h2>
             <Badge tone="sage">Confirmada</Badge>
@@ -35,7 +35,7 @@ export default function PatientHome() {
           </p>
           <Link
             href="/area-paciente/consultas"
-            className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-azure-600 hover:text-azure-700"
+            className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-gold-600 hover:text-gold-700"
           >
             Gerir consultas
             <ArrowRight className="size-4" aria-hidden />
@@ -44,7 +44,7 @@ export default function PatientHome() {
 
         <Card>
           <h2 className="flex items-center gap-2 font-semibold tracking-tight text-ink">
-            <Dumbbell className="size-4 text-azure-600" aria-hidden />
+            <Dumbbell className="size-4 text-gold-600" aria-hidden />
             Plano de tratamento
           </h2>
           <p className="mt-5 text-sm text-slate">{p.planProgress.focus}</p>
@@ -66,7 +66,7 @@ export default function PatientHome() {
           </p>
           <Link
             href="/area-paciente/exercicios"
-            className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-azure-600 hover:text-azure-700"
+            className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-gold-600 hover:text-gold-700"
           >
             Ver exercícios de hoje
             <ArrowRight className="size-4" aria-hidden />
@@ -76,7 +76,7 @@ export default function PatientHome() {
 
       <Card hover={false}>
         <h2 className="flex items-center gap-2 font-semibold tracking-tight text-ink">
-          <FileText className="size-4 text-azure-600" aria-hidden />
+          <FileText className="size-4 text-gold-600" aria-hidden />
           Documentos recentes
         </h2>
         <ul className="mt-4 divide-y divide-line">
