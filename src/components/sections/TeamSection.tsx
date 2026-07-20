@@ -7,7 +7,7 @@ import { team } from "@/content/team";
 import { cn } from "@/lib/utils";
 
 const photos = [
-  { src: "/images/equipa-grupo.jpg", alt: "A equipa da Clínica Marques dos Santos", width: 402, height: 382 },
+  { src: "/images/equipa-oficial.jpg", alt: "A equipa da Clínica Marques dos Santos", width: 2189, height: 1295 },
   { src: "/images/equipa-tres.jpg", alt: "Profissionais da clínica", width: 404, height: 234 },
   { src: "/images/estudio-pilates.jpg", alt: "Estúdio de pilates clínico da clínica", width: 402, height: 385 },
 ];
@@ -42,7 +42,7 @@ export function TeamSection({
                     alt={p.alt}
                     width={p.width}
                     height={p.height}
-                    className="h-56 w-full object-cover object-[center_30%] transition-transform duration-700 ease-[var(--ease-calm)] group-hover:scale-[1.03]"
+                    className="h-auto w-full transition-transform duration-700 ease-[var(--ease-calm)] group-hover:scale-[1.02]"
                   />
                 </figure>
               </StaggerItem>

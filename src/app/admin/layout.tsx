@@ -21,7 +21,7 @@ export default function AdminLayout({
               href="/"
               className="flex items-center gap-2.5 font-semibold tracking-tight text-ink"
             >
-              <LogoHorizontal className="h-7" />
+              <LogoHorizontal />
             </Link>
             <Badge tone="gold">Admin</Badge>
           </div>

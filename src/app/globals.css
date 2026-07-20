@@ -102,6 +102,11 @@ body {
   text-wrap: balance;
 }
 
+/* Lettering do logótipo — geométrica limpa, sempre nítida */
+@utility font-logo {
+  font-family: var(--font-logo), var(--font-sans);
+}
+
 /* Acento editorial da marca — itálico serifado, como nos posts do Instagram */
 @utility text-brand-accent {
   font-family: var(--font-serif);

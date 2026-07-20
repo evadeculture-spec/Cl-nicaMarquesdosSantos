@@ -19,7 +19,7 @@ export default function PatientLayout({
             href="/"
             className="flex items-center gap-2.5 font-semibold tracking-tight text-ink"
           >
-            <LogoHorizontal className="h-7" />
+            <LogoHorizontal />
           </Link>
           <Link
             href="/"

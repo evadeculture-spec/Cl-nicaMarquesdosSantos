@@ -44,7 +44,7 @@ export function Technology() {
                 alt="Ecógrafo na clínica, junto ao logótipo na parede"
                 width={338}
                 height={462}
-                className="h-64 w-full object-cover"
+                className="h-auto w-full"
               />
               <figcaption className="border-t border-line bg-white px-5 py-3 text-xs text-muted">
                 Avaliação ecográfica na clínica, em Castelo Branco.

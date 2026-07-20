@@ -54,7 +54,7 @@ export function Header() {
           className="flex items-center"
           aria-label="Clínica Marques dos Santos — página inicial"
         >
-          <LogoHorizontal className="h-8 sm:h-9" />
+          <LogoHorizontal />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegação principal">

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Inter, Cormorant_Garamond, Jost } from "next/font/google";
 import { clinic } from "@/content/clinic";
 import { jsonLd, medicalBusinessSchema } from "@/lib/seo";
 import "./globals.css";
@@ -8,6 +8,14 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+// Lettering do logótipo — geométrica, próxima do desenho original da marca
+const jost = Jost({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+  variable: "--font-logo",
 });
 
 // Acento editorial da marca — itálico serifado como nos materiais do Instagram
@@ -63,7 +71,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-PT" className={`${inter.variable} ${cormorant.variable}`}>
+    <html lang="pt-PT" className={`${inter.variable} ${cormorant.variable} ${jost.variable}`}>
       <body className="min-h-svh font-sans antialiased">
         <a
           href="#conteudo"

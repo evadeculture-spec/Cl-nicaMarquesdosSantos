@@ -14,7 +14,7 @@ export default function EquipaPage() {
   return (
     <>
       <PageHeader
-        image="/images/equipa-grupo.jpg"
+        image="/images/equipa-oficial.jpg"
         imageAlt="A equipa da Clínica Marques dos Santos"
         eyebrow="A equipa"
         title="Quem vai cuidar de si."

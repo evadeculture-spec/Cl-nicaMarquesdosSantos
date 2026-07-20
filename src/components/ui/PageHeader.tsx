@@ -48,10 +48,11 @@ export function PageHeader({
               <Image
                 src={image}
                 alt={imageAlt}
-                width={800}
-                height={600}
+                width={1200}
+                height={800}
                 priority
-                className="h-60 w-full object-cover object-[center_30%] sm:h-72 lg:h-80"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="h-auto w-full"
               />
             </figure>
           </Reveal>
