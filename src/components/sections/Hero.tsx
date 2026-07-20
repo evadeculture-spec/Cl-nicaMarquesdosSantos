@@ -1,0 +1,173 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowRight, Clock, Sparkles, Star } from "lucide-react";
+import { ButtonLink } from "@/components/ui/Button";
+import { clinic } from "@/content/clinic";
+import { EASE_CALM } from "@/lib/motion";
+
+const entrance = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.9, ease: EASE_CALM, delay },
+});
+
+function FloatingCard({
+  className,
+  delay,
+  drift,
+  children,
+}: {
+  className?: string;
+  delay: number;
+  drift?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.div
+      {...entrance(delay)}
+      className={`glass pointer-events-auto absolute rounded-2xl px-5 py-4 shadow-lift ${
+        drift ? "animate-drift" : ""
+      } ${className ?? ""}`}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function Hero() {
+  const reduce = useReducedMotion();
+
+  return (
+    <section className="hero-field relative flex min-h-svh items-center overflow-hidden">
+      {/* Halo suave a respirar — substitui vídeo/WebGL com custo quase nulo */}
+      {!reduce && (
+        <div
+          aria-hidden
+          className="animate-breathe absolute -top-32 right-[-10%] size-[42rem] rounded-full bg-azure-100/50 blur-3xl"
+        />
+      )}
+
+      <div className="container-site relative z-10 grid items-center gap-16 pb-24 pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:pb-16 lg:pt-24">
+        <div className="max-w-xl">
+          <motion.p
+            {...entrance(0.05)}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-4 py-1.5 text-sm text-slate"
+          >
+            <span className="size-1.5 rounded-full bg-sage-600" aria-hidden />
+            Fisioterapia em Lisboa · desde 2007
+          </motion.p>
+
+          <motion.h1
+            {...entrance(0.15)}
+            className="text-display text-balance-pretty text-[2.5rem] text-ink sm:text-6xl lg:text-[4.25rem]"
+          >
+            O seu corpo sabe
+            <br />
+            voltar a estar bem.
+            <span className="text-azure-600"> Nós mostramos o caminho.</span>
+          </motion.h1>
+
+          <motion.p
+            {...entrance(0.28)}
+            className="mt-7 max-w-md text-lg leading-relaxed text-slate"
+          >
+            Avaliação rigorosa, uma hora inteira só para si e um plano feito à
+            medida — do primeiro dia à última sessão.
+          </motion.p>
+
+          <motion.div {...entrance(0.4)} className="mt-10 flex flex-wrap items-center gap-4">
+            <ButtonLink href="/marcar" size="lg">
+              Marcar Consulta
+              <ArrowRight className="size-4" aria-hidden />
+            </ButtonLink>
+            <ButtonLink href="/sobre" variant="secondary" size="lg">
+              Conhecer a Clínica
+            </ButtonLink>
+          </motion.div>
+
+          <motion.p {...entrance(0.55)} className="mt-8 text-sm text-muted">
+            Sem necessidade de prescrição médica · Acordos com os principais seguros
+          </motion.p>
+        </div>
+
+        {/* Composição visual: painel sereno + floating cards */}
+        <div className="pointer-events-none relative hidden aspect-[4/5] max-h-[34rem] lg:block">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: EASE_CALM, delay: 0.2 }}
+            className="absolute inset-0 overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-azure-50 via-white to-sage-100/60 shadow-lift"
+            aria-hidden
+          >
+            <div className="absolute inset-x-10 top-12 space-y-4 opacity-80">
+              <div className="h-2.5 w-2/5 rounded-full bg-azure-200/70" />
+              <div className="h-2.5 w-3/5 rounded-full bg-cloud" />
+              <div className="h-2.5 w-1/2 rounded-full bg-cloud" />
+            </div>
+            <div className="absolute bottom-0 left-1/2 h-52 w-4/5 -translate-x-1/2 rounded-t-[3rem] bg-white/70" />
+          </motion.div>
+
+          <FloatingCard className="left-[-3rem] top-16" delay={0.7} drift>
+            <div className="flex items-center gap-3">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-amber-50 text-amber-500">
+                <Star className="size-5 fill-current" aria-hidden />
+              </span>
+              <div>
+                <p className="text-lg font-semibold tracking-tight text-ink">
+                  {clinic.metrics.rating.toLocaleString("pt-PT")}
+                </p>
+                <p className="text-xs text-muted">{clinic.metrics.reviews} avaliações</p>
+              </div>
+            </div>
+          </FloatingCard>
+
+          <FloatingCard className="right-[-2rem] top-[45%]" delay={0.85} drift>
+            <div className="flex items-center gap-3">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-azure-50 text-azure-600">
+                <Sparkles className="size-5" aria-hidden />
+              </span>
+              <div>
+                <p className="text-lg font-semibold tracking-tight text-ink">10</p>
+                <p className="text-xs text-muted">especialidades clínicas</p>
+              </div>
+            </div>
+          </FloatingCard>
+
+          <FloatingCard className="bottom-10 left-4" delay={1}>
+            <div className="flex items-center gap-3">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-sage-100 text-sage-600">
+                <Clock className="size-5" aria-hidden />
+              </span>
+              <div>
+                <p className="text-lg font-semibold tracking-tight text-ink">
+                  {clinic.metrics.responseMinutes} min
+                </p>
+                <p className="text-xs text-muted">tempo médio de resposta</p>
+              </div>
+            </div>
+          </FloatingCard>
+        </div>
+      </div>
+
+      {/* Indicador de scroll */}
+      {!reduce && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 1 }}
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block"
+          aria-hidden
+        >
+          <div className="flex h-9 w-5 justify-center rounded-full border border-line pt-1.5">
+            <motion.div
+              className="size-1 rounded-full bg-slate"
+              animate={{ y: [0, 12, 0], opacity: [1, 0.2, 1] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
+      )}
+    </section>
+  );
+}
