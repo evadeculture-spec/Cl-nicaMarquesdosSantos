@@ -20,6 +20,7 @@ export default async function MarcarPage({
   return (
     <>
       <PageHeader
+        image="/images/equipa-grupo.jpg"
         eyebrow="Marcação online"
         title="Sessenta segundos até à sua consulta."
         lead="Escolha o tratamento, o profissional e a hora. Confirmamos por email em 15 minutos, dentro do horário da clínica — e lembramos-lhe no dia anterior."

@@ -15,6 +15,7 @@ export default function FaqPage() {
   return (
     <>
       <PageHeader
+        image="/images/clinica-parede.jpg"
         eyebrow="FAQ"
         title="As respostas antes das perguntas."
         lead="Se a sua dúvida não estiver aqui, o assistente no canto do ecrã responde a qualquer hora — e a Carla responde em 15 minutos, em horário de clínica."

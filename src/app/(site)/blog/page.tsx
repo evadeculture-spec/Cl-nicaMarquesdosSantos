@@ -14,6 +14,7 @@ export default function BlogPage() {
   return (
     <>
       <PageHeader
+        image="/images/estudio-pilates.jpg"
         eyebrow="Blog"
         title="Ler também faz parte do tratamento."
         lead="Quanto mais souber sobre o seu corpo, melhor decide. Artigos curtos, honestos e sem sensacionalismo — escritos por quem trata."

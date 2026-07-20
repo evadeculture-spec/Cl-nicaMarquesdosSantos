@@ -14,6 +14,7 @@ export default function TratamentosPage() {
   return (
     <>
       <PageHeader
+        image="/images/estudio-pilates.jpg"
         eyebrow="Tratamentos"
         title="Sabe sempre o que paga e porquê."
         lead="Sessões individuais, fatura-recibo para reembolso e desmarcação gratuita até 24 horas antes. Sem pacotes forçados, sem letras pequenas."

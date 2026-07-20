@@ -15,6 +15,7 @@ export default function CasosPage() {
   return (
     <>
       <PageHeader
+        image="/images/tratamento-maos.jpg"
         eyebrow="Casos clínicos"
         title="Resultados que se podem medir."
         lead="Quatro percursos reais, anonimizados e partilhados com autorização. Sem casos escolhidos a dedo pela facilidade — escolhidos pelo que ensinam."

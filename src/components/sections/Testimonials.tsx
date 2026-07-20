@@ -1,11 +1,14 @@
 import { Star } from "lucide-react";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Ambient } from "@/components/ui/Ambient";
 import { testimonials } from "@/content/testimonials";
 
 export function Testimonials() {
   return (
-    <section id="testemunhos" className="container-site py-24 lg:py-36">
+    <section id="testemunhos" className="relative py-24 lg:py-36">
+      <Ambient image="/images/equipa-tres.jpg" />
+      <div className="container-site relative">
       <SectionHeading
         align="center"
         eyebrow="Testemunhos"
@@ -32,6 +35,7 @@ export function Testimonials() {
           </StaggerItem>
         ))}
       </Stagger>
+      </div>
     </section>
   );
 }

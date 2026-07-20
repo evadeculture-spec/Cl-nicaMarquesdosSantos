@@ -13,6 +13,7 @@ export default function ContactoPage() {
   return (
     <>
       <PageHeader
+        image="/images/equipa-tres.jpg"
         eyebrow="Contacto"
         title="Estamos à distância de uma mensagem."
         lead="Telefone, email, formulário ou assistente digital — escolha o canal. Do outro lado está sempre alguém que conhece a clínica por dentro."

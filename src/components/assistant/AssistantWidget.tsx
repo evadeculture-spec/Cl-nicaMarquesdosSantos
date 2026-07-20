@@ -130,7 +130,7 @@ export function AssistantWidget() {
         aria-expanded={open}
         aria-controls="assistant-panel"
         aria-label={open ? "Fechar assistente" : "Abrir assistente digital"}
-        className="fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-gold-600 text-white shadow-lift transition-all duration-500 ease-[var(--ease-calm)] hover:scale-105 hover:bg-gold-700 active:scale-95"
+        className="fixed bottom-24 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-gold-600 text-white shadow-lift transition-all duration-500 ease-[var(--ease-calm)] hover:scale-105 hover:bg-gold-700 active:scale-95 lg:bottom-5"
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
@@ -155,7 +155,7 @@ export function AssistantWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.97 }}
             transition={{ duration: 0.45, ease: EASE_CALM }}
-            className="fixed bottom-24 right-5 z-50 flex max-h-[70svh] w-[min(24rem,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-lift"
+            className="fixed bottom-[10.5rem] right-5 z-50 flex max-h-[62svh] w-[min(24rem,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-lift lg:bottom-24 lg:max-h-[70svh]"
           >
             <div className="border-b border-line bg-mist/60 px-6 py-4">
               <p className="font-semibold tracking-tight text-ink">Assistente da clínica</p>

@@ -17,6 +17,7 @@ export default function EspecialidadesPage() {
   return (
     <>
       <PageHeader
+        image="/images/tratamento-maos.jpg"
         eyebrow="Especialidades"
         title="Mais de vinte formas de cuidar de si."
         lead="Das valências principais às consultas de especialidade, tudo num só espaço — com um médico fisiatra que garante a avaliação e prescrição necessárias ao reembolso dos tratamentos."

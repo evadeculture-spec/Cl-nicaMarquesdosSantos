@@ -14,6 +14,7 @@ export default function TecnologiaPage() {
   return (
     <>
       <PageHeader
+        image="/images/clinica-parede.jpg"
         eyebrow="Tecnologia"
         title="Medimos, para não termos de adivinhar."
         lead="Dinamometria, análise de movimento, relatórios digitais e marcação online. A tecnologia trata da precisão e da comodidade — as mãos e o tempo continuam a ser nossos."

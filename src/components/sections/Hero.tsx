@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Clock, Sparkles, Star } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
@@ -41,6 +42,19 @@ export function Hero() {
 
   return (
     <section className="hero-field relative flex min-h-svh items-center overflow-hidden">
+      {/* Fotografia ambiente do espaço, desfocada em textura de luz */}
+      <div aria-hidden className="absolute inset-0">
+        <Image
+          src="/images/estudio-pilates.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="scale-110 object-cover opacity-25 blur-2xl"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/90" />
+      </div>
+
       {/* Halo suave a respirar — substitui vídeo/WebGL com custo quase nulo */}
       {!reduce && (
         <div

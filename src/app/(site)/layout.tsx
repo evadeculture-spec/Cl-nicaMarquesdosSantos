@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MobileCta } from "@/components/layout/MobileCta";
 import { AssistantWidget } from "@/components/assistant/AssistantWidget";
 
 export default function SiteLayout({
@@ -11,6 +12,7 @@ export default function SiteLayout({
       <main id="conteudo">{children}</main>
       <Footer />
       <AssistantWidget />
+      <MobileCta />
     </>
   );
 }
