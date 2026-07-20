@@ -41,7 +41,7 @@ export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="hero-field relative flex min-h-svh items-center overflow-hidden">
+    <section className="hero-field relative flex items-center overflow-hidden lg:min-h-svh">
       {/* Fotografia ambiente do espaço, desfocada em textura de luz */}
       <div aria-hidden className="absolute inset-0">
         <Image
@@ -105,8 +105,8 @@ export function Hero() {
           </motion.p>
         </div>
 
-        {/* Composição visual: painel sereno + floating cards */}
-        <div className="pointer-events-none relative hidden aspect-[4/5] max-h-[34rem] lg:block">
+        {/* Composição visual: painel sereno + floating cards (tablet e desktop) */}
+        <div className="pointer-events-none relative mx-auto hidden aspect-[4/5] w-full max-w-sm sm:block lg:max-h-[34rem] lg:max-w-none">
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
