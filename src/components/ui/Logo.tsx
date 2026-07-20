@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+const LOCKUP_ALT =
+  "Clínica Marques dos Santos — Fisioterapia, Osteopatia e outras especialidades médicas";
+
 /** Símbolo oficial da marca — mãos que acolhem, branco sobre dourado. */
 export function LogoMark({ className }: { className?: string }) {
   return (
@@ -16,34 +19,32 @@ export function LogoMark({ className }: { className?: string }) {
 }
 
 /**
- * Lockup completo, recriado tipograficamente para ficar nítido em
- * qualquer fundo claro: símbolo + CLÍNICA + MARQUES DOS SANTOS + subtítulo.
+ * Ilustração oficial completa (símbolo + nome), extraída do artwork
+ * original — versão dourada para fundos claros.
  */
 export function LogoLockup({ className }: { className?: string }) {
   return (
-    <div className={cn("flex flex-col items-center text-center", className)}>
-      <LogoMark className="size-16 rounded-2xl shadow-soft" />
-      <p className="mt-5 text-sm font-light uppercase tracking-[0.5em] text-gold-600">
-        Clínica
-      </p>
-      <p className="mt-1 text-2xl font-bold uppercase tracking-[0.12em] text-gold-700">
-        Marques dos Santos
-      </p>
-      <p className="mt-1.5 text-[0.6rem] font-medium uppercase tracking-[0.18em] text-muted">
-        Fisioterapia, Osteopatia e outras especialidades médicas
-      </p>
-    </div>
+    <Image
+      src="/brand/lockup-tinted.png"
+      alt={LOCKUP_ALT}
+      width={900}
+      height={1018}
+      className={cn("h-auto w-64", className)}
+    />
   );
 }
 
-/** Artwork oficial completo (recorte do original), para painéis dourados. */
+/**
+ * Ilustração oficial completa em branco — para painéis dourados,
+ * onde as mãos ganham o dourado do fundo, como no artwork original.
+ */
 export function LogoArtwork({ className }: { className?: string }) {
   return (
     <Image
-      src="/brand/logo-lockup-gold.png"
-      alt="Clínica Marques dos Santos — Fisioterapia, Osteopatia e outras especialidades médicas"
-      width={1100}
-      height={1051}
+      src="/brand/lockup-white.png"
+      alt={LOCKUP_ALT}
+      width={900}
+      height={1018}
       className={cn("h-auto w-full", className)}
       priority
     />

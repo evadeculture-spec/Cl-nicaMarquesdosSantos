@@ -113,7 +113,7 @@ export function Hero() {
             transition={{ duration: 1.2, ease: EASE_CALM, delay: 0.2 }}
             className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/70 bg-[linear-gradient(160deg,#a3833b_0%,#c6ab5a_45%,#d9c773_100%)] shadow-lift"
           >
-            <LogoArtwork className="max-w-[78%]" />
+            <LogoArtwork className="max-w-[66%] -translate-y-3" />
           </motion.div>
 
           <FloatingCard className="left-[-3rem] top-16" delay={0.7} drift>
@@ -142,7 +142,7 @@ export function Hero() {
             </div>
           </FloatingCard>
 
-          <FloatingCard className="bottom-10 left-4" delay={1}>
+          <FloatingCard className="bottom-6 left-[-2.5rem]" delay={1}>
             <div className="flex items-center gap-3">
               <span className="flex size-10 items-center justify-center rounded-xl bg-sage-100 text-sage-600">
                 <Clock className="size-5" aria-hidden />
