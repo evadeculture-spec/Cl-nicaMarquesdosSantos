@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     description: clinic.description,
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/icon.svg" },
+  icons: { icon: "/icon.png", apple: "/apple-icon.png" },
 };
 
 export const viewport: Viewport = {

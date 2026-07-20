@@ -14,6 +14,7 @@ export default function EquipaPage() {
   return (
     <>
       <PageHeader
+        image="/images/equipa-grupo.jpg"
         eyebrow="A equipa"
         title="Quem vai cuidar de si."
         lead="Uma equipa multidisciplinar — fisioterapia, osteopatia, podoposturologia, terapia da fala e psicologia — e uma assistente que responde antes de o telefone tocar duas vezes."

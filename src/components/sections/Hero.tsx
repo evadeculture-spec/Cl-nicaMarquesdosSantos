@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Clock, Sparkles, Star } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
+import { LogoArtwork } from "@/components/ui/Logo";
 import { clinic } from "@/content/clinic";
 import { EASE_CALM } from "@/lib/motion";
 
@@ -96,15 +97,9 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: EASE_CALM, delay: 0.2 }}
-            className="absolute inset-0 overflow-hidden rounded-[2.5rem] border border-white/70 bg-gradient-to-br from-gold-50 via-white to-sage-100/60 shadow-lift"
-            aria-hidden
+            className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/70 bg-[linear-gradient(160deg,#a3833b_0%,#c6ab5a_45%,#d9c773_100%)] shadow-lift"
           >
-            <div className="absolute inset-x-10 top-12 space-y-4 opacity-80">
-              <div className="h-2.5 w-2/5 rounded-full bg-gold-200/70" />
-              <div className="h-2.5 w-3/5 rounded-full bg-cloud" />
-              <div className="h-2.5 w-1/2 rounded-full bg-cloud" />
-            </div>
-            <div className="absolute bottom-0 left-1/2 h-52 w-4/5 -translate-x-1/2 rounded-t-[3rem] bg-white/70" />
+            <LogoArtwork className="max-w-[78%]" />
           </motion.div>
 
           <FloatingCard className="left-[-3rem] top-16" delay={0.7} drift>

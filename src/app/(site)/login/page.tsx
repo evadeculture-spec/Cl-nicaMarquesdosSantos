@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LoginForm } from "@/components/auth/LoginForm";
+import { LogoLockup } from "@/components/ui/Logo";
 
 export const metadata: Metadata = {
   title: "Área do paciente — Entrar",
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <section className="hero-field flex min-h-svh items-center justify-center px-5 py-32">
+    <section className="hero-field flex min-h-svh flex-col items-center justify-center gap-10 px-5 py-32">
+      <LogoLockup />
       <LoginForm />
     </section>
   );

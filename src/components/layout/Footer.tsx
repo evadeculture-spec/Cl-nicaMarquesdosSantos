@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark } from "@/components/ui/Logo";
+import { LogoLockup } from "@/components/ui/Logo";
 import { clinic } from "@/content/clinic";
 import { specialties } from "@/content/specialties";
 
@@ -37,19 +37,12 @@ export function Footer() {
   return (
     <footer className="border-t border-line bg-mist">
       <div className="container-site py-16 lg:py-20">
+        <Link href="/" className="mb-14 block">
+          <LogoLockup />
+        </Link>
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div className="max-w-sm">
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 text-lg font-semibold tracking-tight text-ink"
-            >
-              <LogoMark className="size-7" />
-              {clinic.shortName}
-            </Link>
-            <p className="mt-2 text-xs uppercase tracking-widest text-muted">
-              Fisioterapia, osteopatia e outras especialidades médicas
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-slate">
+            <p className="text-sm leading-relaxed text-slate">
               {clinic.tagline} Em Castelo Branco, com uma regra que nunca
               muda: uma pessoa, um profissional, todo o tempo necessário.
             </p>

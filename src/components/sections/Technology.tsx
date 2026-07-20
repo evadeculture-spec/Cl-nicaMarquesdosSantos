@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CalendarCheck, LineChart, MessageCircleHeart, ScanLine } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
@@ -36,6 +37,20 @@ export function Technology() {
             title="Tecnologia ao serviço do cuidado — nunca o contrário."
             lead="Usamos dados e ferramentas digitais para uma coisa apenas: tornar o seu tratamento mais preciso, mais transparente e mais cómodo."
           />
+          <Reveal delay={0.15} className="mt-10 hidden lg:block">
+            <figure className="overflow-hidden rounded-2xl border border-line shadow-soft">
+              <Image
+                src="/images/clinica-parede.jpg"
+                alt="Ecógrafo na clínica, junto ao logótipo na parede"
+                width={338}
+                height={462}
+                className="h-64 w-full object-cover"
+              />
+              <figcaption className="border-t border-line bg-white px-5 py-3 text-xs text-muted">
+                Avaliação ecográfica na clínica, em Castelo Branco.
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
         <Stagger className="grid gap-5 sm:grid-cols-2" stagger={0.08}>
           {items.map((item) => (

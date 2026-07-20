@@ -33,6 +33,7 @@ export default function SobrePage() {
   return (
     <>
       <PageHeader
+        image="/images/clinica-parede.jpg"
         eyebrow="Sobre nós"
         title="Uma nova perspectiva de cuidar."
         lead="A Clínica Marques dos Santos nasceu em Castelo Branco para juntar, num só espaço, fisioterapia, osteopatia, reabilitação perineal e estética, podoposturologia, terapia da fala e psicologia — com uma regra simples: cada pessoa merece tempo, rigor e um plano à medida."
