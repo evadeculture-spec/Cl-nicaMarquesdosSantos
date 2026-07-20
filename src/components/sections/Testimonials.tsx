@@ -1,14 +1,25 @@
+import Image from "next/image";
 import { Star } from "lucide-react";
+import { Reveal } from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Ambient } from "@/components/ui/Ambient";
 import { testimonials } from "@/content/testimonials";
 
 export function Testimonials() {
   return (
-    <section id="testemunhos" className="relative py-24 lg:py-36">
-      <Ambient image="/images/equipa-tres.jpg" />
-      <div className="container-site relative">
+    <section id="testemunhos" className="bg-mist py-24 lg:py-36">
+      <div className="container-site">
+        <Reveal className="mx-auto mb-12 w-fit">
+          <figure className="overflow-hidden rounded-3xl border border-line shadow-lift">
+            <Image
+              src="/images/equipa-tres.jpg"
+              alt="Profissionais da Clínica Marques dos Santos"
+              width={404}
+              height={234}
+              className="h-52 w-auto object-cover"
+            />
+          </figure>
+        </Reveal>
       <SectionHeading
         align="center"
         eyebrow="Testemunhos"

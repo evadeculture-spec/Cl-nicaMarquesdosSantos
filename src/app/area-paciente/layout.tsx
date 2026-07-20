@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PatientNav } from "@/components/patient/PatientNav";
-import { LogoMark } from "@/components/ui/Logo";
+import { LogoHorizontal } from "@/components/ui/Logo";
 
 export const metadata: Metadata = {
   title: "Área do paciente",
@@ -19,8 +19,7 @@ export default function PatientLayout({
             href="/"
             className="flex items-center gap-2.5 font-semibold tracking-tight text-ink"
           >
-            <LogoMark className="size-6" />
-            Marques dos Santos
+            <LogoHorizontal className="h-7" />
           </Link>
           <Link
             href="/"

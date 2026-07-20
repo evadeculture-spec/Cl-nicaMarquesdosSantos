@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { AdminNav } from "@/components/admin/AdminNav";
-import { LogoMark } from "@/components/ui/Logo";
+import { LogoHorizontal } from "@/components/ui/Logo";
 import { Badge } from "@/components/ui/Badge";
 
 export const metadata: Metadata = {
@@ -21,8 +21,7 @@ export default function AdminLayout({
               href="/"
               className="flex items-center gap-2.5 font-semibold tracking-tight text-ink"
             >
-              <LogoMark className="size-6" />
-              Marques dos Santos
+              <LogoHorizontal className="h-7" />
             </Link>
             <Badge tone="gold">Admin</Badge>
           </div>

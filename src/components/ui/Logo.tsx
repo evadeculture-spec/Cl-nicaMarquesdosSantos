@@ -19,6 +19,23 @@ export function LogoMark({ className }: { className?: string }) {
 }
 
 /**
+ * Lockup horizontal integrado (símbolo + lettering original numa só peça),
+ * para o header e barras de navegação.
+ */
+export function LogoHorizontal({ className }: { className?: string }) {
+  return (
+    <Image
+      src="/brand/lockup-horizontal-tinted.png"
+      alt={LOCKUP_ALT}
+      width={1309}
+      height={300}
+      priority
+      className={cn("h-9 w-auto", className)}
+    />
+  );
+}
+
+/**
  * Ilustração oficial completa (símbolo + nome), extraída do artwork
  * original — versão dourada para fundos claros.
  */

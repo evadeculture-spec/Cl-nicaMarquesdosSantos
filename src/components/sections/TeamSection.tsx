@@ -12,7 +12,14 @@ const photos = [
   { src: "/images/estudio-pilates.jpg", alt: "Estúdio de pilates clínico da clínica", width: 402, height: 385 },
 ];
 
-export function TeamSection({ limit }: { limit?: number }) {
+export function TeamSection({
+  limit,
+  showPhotos = true,
+}: {
+  limit?: number;
+  /** Desligar quando a página já mostra a fotografia da equipa no cabeçalho. */
+  showPhotos?: boolean;
+}) {
   const members = limit ? team.slice(0, limit) : team;
 
   return (
@@ -24,26 +31,30 @@ export function TeamSection({ limit }: { limit?: number }) {
       />
 
       {/* Fotografias reais da clínica (Instagram @clinicamarquesdossantos) */}
-      <Stagger className="mt-14 grid gap-4 sm:grid-cols-3" stagger={0.1}>
-        {photos.map((p, i) => (
-          <StaggerItem key={p.src} className={cn(i === 1 && "sm:mt-10")}>
-            <figure className="group overflow-hidden rounded-2xl border border-line shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:shadow-lift">
-              <Image
-                src={p.src}
-                alt={p.alt}
-                width={p.width}
-                height={p.height}
-                className="h-56 w-full object-cover transition-transform duration-700 ease-[var(--ease-calm)] group-hover:scale-[1.03]"
-              />
-            </figure>
-          </StaggerItem>
-        ))}
-      </Stagger>
-      <Reveal variant="fade">
-        <p className="mt-4 text-center text-xs text-muted">
-          A nossa equipa e o nosso espaço, em Castelo Branco.
-        </p>
-      </Reveal>
+      {showPhotos && (
+        <>
+          <Stagger className="mt-14 grid gap-4 sm:grid-cols-3" stagger={0.1}>
+            {photos.map((p, i) => (
+              <StaggerItem key={p.src} className={cn(i === 1 && "sm:mt-10")}>
+                <figure className="group overflow-hidden rounded-2xl border border-line shadow-soft transition-all duration-500 ease-[var(--ease-calm)] hover:-translate-y-0.5 hover:shadow-lift">
+                  <Image
+                    src={p.src}
+                    alt={p.alt}
+                    width={p.width}
+                    height={p.height}
+                    className="h-56 w-full object-cover object-[center_30%] transition-transform duration-700 ease-[var(--ease-calm)] group-hover:scale-[1.03]"
+                  />
+                </figure>
+              </StaggerItem>
+            ))}
+          </Stagger>
+          <Reveal variant="fade">
+            <p className="mt-4 text-center text-xs text-muted">
+              A nossa equipa e o nosso espaço, em Castelo Branco.
+            </p>
+          </Reveal>
+        </>
+      )}
 
       <Stagger className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
         {members.map((m) => (

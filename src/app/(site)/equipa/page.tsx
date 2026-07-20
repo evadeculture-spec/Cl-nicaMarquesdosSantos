@@ -15,11 +15,12 @@ export default function EquipaPage() {
     <>
       <PageHeader
         image="/images/equipa-grupo.jpg"
+        imageAlt="A equipa da Clínica Marques dos Santos"
         eyebrow="A equipa"
         title="Quem vai cuidar de si."
         lead="Uma equipa multidisciplinar — fisioterapia, osteopatia, podoposturologia, terapia da fala e psicologia — e uma assistente que responde antes de o telefone tocar duas vezes."
       />
-      <TeamSection />
+      <TeamSection showPhotos={false} />
       <FinalCta />
     </>
   );
