@@ -62,7 +62,7 @@ function triage(input: string): Message {
   if (t.includes("preço") || t.includes("preco") || t.includes("custa") || t.includes("valor")) {
     return {
       role: "assistant",
-      text: "A avaliação inicial custa 40€ (60 minutos) e as sessões de fisioterapia 35€. Trabalhamos com os principais seguros e emitimos fatura-recibo para reembolso.",
+      text: "A avaliação inicial custa 400€ (60 minutos) e as sessões de fisioterapia 350€. Trabalhamos com os principais seguros e emitimos fatura-recibo para reembolso.",
       cta: { href: "/tratamentos", label: "Ver todos os preços" },
     };
   }

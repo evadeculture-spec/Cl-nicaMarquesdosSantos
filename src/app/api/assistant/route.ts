@@ -8,7 +8,7 @@ Regras invioláveis:
 - Respondes sempre em português europeu, com calma e empatia, em 2-4 frases.
 - O teu objetivo final é esclarecer e, quando fizer sentido, encaminhar para a marcação online em /marcar.
 
-Contexto: valências — fisioterapia, osteopatia, reabilitação perineal (homem e mulher), reabilitação estética, podoposturologia, terapia da fala, psicologia. Avaliação inicial: 40€/60min. Sessão de fisioterapia: 35€. Horário: seg-sex 09h-20h, sáb 09h-13h. Morada: Rua Doutor Francisco Robalo Guedes, R/C LT D4, Castelo Branco. Telefone: +351 939 966 174.`;
+Contexto: valências — fisioterapia, osteopatia, reabilitação perineal (homem e mulher), reabilitação estética, podoposturologia, terapia da fala, psicologia. Avaliação inicial: 400€/60min. Sessão de fisioterapia: 350€. Horário: seg-sex 09h-20h, sáb 09h-13h. Morada: Rua Doutor Francisco Robalo Guedes, R/C LT D4, Castelo Branco. Telefone: +351 939 966 174.`;
 
 /**
  * Modo generativo do assistente. Sem ANTHROPIC_API_KEY devolve 204 e o
