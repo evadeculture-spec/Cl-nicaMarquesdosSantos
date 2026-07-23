@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<title>Clínica Marques dos Santos · Manual do Colaborador</title>
+<style>
+  :root{
+    --canvas:#ffffff; --mist:#f9f7f0; --cloud:#f1ecdc; --line:#e6e0cb;
+    --ink:#221e12; --ink2:#171308; --slate:#5c5640; --muted:#746c52;
+    --gold50:#fbf8ee; --gold100:#f4eeda; --gold200:#e6daae;
+    --gold500:#bca95f; --gold600:#75672c; --gold700:#5d5223;
+    --sage100:#ebf0e1; --sage600:#4f6b39; --sage700:#415a2e;
+    --alert:#9c3d2e; --alertbg:#fbeee9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Liberation Sans","Helvetica Neue",Arial,"DejaVu Sans",sans-serif;
+    color:var(--ink); font-size:11px; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  @page{ size:A4; margin:0; }
+
+  .page{
+    position:relative; width:210mm; height:297mm; padding:20mm 18mm 18mm;
+    background:#fff; overflow:hidden; page-break-after:always;
+  }
+  .page:last-child{ page-break-after:auto; }
+
+  /* footer */
+  .foot{
+    position:absolute; left:18mm; right:18mm; bottom:11mm;
+    display:flex; align-items:center; justify-content:space-between;
+    font-size:9px; color:var(--muted); border-top:0;
+  }
+  .foot .brand{display:flex; align-items:center; gap:7px;}
+  .foot .brand img{height:15px; width:auto; opacity:.85;}
+  .foot .bar{display:inline-block; width:26px; height:3px; background:var(--gold600); border-radius:2px;}
+
+  h1,h2,h3,h4,p,ul,ol{margin:0;}
+  p{margin:0 0 7px;}
+  strong,b{color:var(--ink);}
+  .lead{font-size:11.5px; color:var(--slate); margin-bottom:12px;}
+  .lead strong{color:var(--gold700);}
+
+  /* section heading */
+  .h{color:var(--gold700); font-size:13.5px; font-weight:800; margin:16px 0 7px; letter-spacing:-.01em;}
+  .h.first{margin-top:4px;}
+  .h.sage{color:var(--sage700);}
+
+  /* module header */
+  .mod{display:flex; margin:0 0 6px; box-shadow:0 1px 2px rgba(34,30,18,.06);}
+  .mod .num{width:66px; min-width:66px; display:flex; align-items:center; justify-content:center;
+    font-size:26px; font-weight:800; color:#fff; background:var(--ink);}
+  .mod .bar{flex:1; padding:12px 18px; background:var(--gold600); color:#fff; display:flex; flex-direction:column; justify-content:center;}
+  .mod .bar h2{font-size:19px; font-weight:800; margin:0; letter-spacing:-.01em;}
+  .mod .bar p{font-size:11px; margin:3px 0 0; color:rgba(255,255,255,.82); font-weight:400;}
+  .mod.sage .bar{background:var(--sage600);} .mod.sage .num{background:var(--sage700);}
+  .mod.ink .bar{background:var(--ink);} .mod.ink .num{background:var(--gold600);}
+  .mod.gold2 .bar{background:var(--gold700);} .mod.gold2 .num{background:var(--ink);}
+  .mod.alert .bar{background:var(--alert);} .mod.alert .num{background:#6e281d;}
+
+  /* tables */
+  table{width:100%; border-collapse:collapse; margin:4px 0 6px; font-size:10.5px;}
+  th{background:var(--gold600); color:#fff; text-align:left; padding:7px 10px; font-weight:700; font-size:10px; letter-spacing:.01em;}
+  td{padding:6.5px 10px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--slate);}
+  td b, td strong{color:var(--ink);}
+  tr:nth-child(even) td{background:var(--mist);}
+  table.sage th{background:var(--sage600);}
+  table.ink th{background:var(--ink);}
+  .tag-gold{color:var(--gold700); font-weight:700;}
+  .tag-sage{color:var(--sage700); font-weight:700;}
+  .tag-alert{color:var(--alert); font-weight:700;}
+
+  /* architecture grid */
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin:6px 0;}
+  .grid .cell{background:#fff; padding:9px 12px; min-height:52px;}
+  .grid .cell b{font-size:11px; display:block; margin-bottom:2px;}
+  .grid .cell p{font-size:10px; color:var(--slate); margin:0; line-height:1.4;}
+  .c-gold b{color:var(--gold700);} .c-sage b{color:var(--sage700);} .c-ink b{color:var(--ink);}
+
+  /* callout boxes */
+  .box{padding:11px 15px; margin:12px 0; border-left:4px solid var(--gold600); background:var(--gold50); font-size:10.5px; color:var(--slate);}
+  .box h4{margin:0 0 5px; font-size:11px; font-weight:800; color:var(--ink); letter-spacing:.02em; text-transform:uppercase;}
+  .box p{margin:0;}
+  .box.sage{border-color:var(--sage600); background:var(--sage100);}
+  .box.alert{border-color:var(--alert); background:var(--alertbg);}
+  .box.neutral{border-color:var(--gold500); background:#f6f2e6;}
+
+  /* ordered / bullet lists */
+  ul.clean{list-style:none; padding:0; margin:6px 0;}
+  ul.clean li{position:relative; padding:3px 0 3px 16px; font-size:11px; color:var(--slate);}
+  ul.clean li:before{content:"•"; position:absolute; left:2px; color:var(--gold500); font-weight:800;}
+  ol.steps{margin:6px 0; padding-left:0; list-style:none; counter-reset:s;}
+  ol.steps li{position:relative; padding:3px 0 3px 22px; font-size:11px; color:var(--slate); counter-increment:s;}
+  ol.steps li:before{content:counter(s) "."; position:absolute; left:0; color:var(--gold600); font-weight:800;}
+
+  .check p{font-size:11px; margin:4px 0; color:var(--slate);}
+  .check .bx{color:var(--gold600); font-weight:800; margin-right:4px;}
+
+  /* code */
+  .code{background:var(--ink); color:#dcd2a6; font-family:"DejaVu Sans Mono","Liberation Mono",monospace;
+    font-size:9.5px; padding:12px 15px; white-space:pre; line-height:1.55; margin:8px 0; border-radius:2px;}
+  .code .c{color:#8f855f;}
+
+  /* pipeline flow */
+  .flow{display:flex; gap:1px; background:var(--line); border:1px solid var(--line); margin:6px 0;}
+  .flow div{flex:1; background:var(--gold600); color:#fff; padding:8px 6px; text-align:center; font-size:9.5px; font-weight:700;}
+  .flow.sage div{background:var(--sage600);}
+  .flow div:nth-child(even){background:var(--gold700);}
+  .flow.sage div:nth-child(even){background:var(--sage700);}
+
+  /* timeline */
+  .tl{display:grid; grid-template-columns:158px 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin:6px 0;}
+  .tl .t{background:var(--gold600); color:#fff; padding:9px 12px;}
+  .tl .t b{display:block; font-size:12px;} .tl .t span{font-size:9.5px; color:rgba(255,255,255,.8);}
+  .tl .d{background:#fff; padding:9px 12px; font-size:10.5px; color:var(--slate); display:flex; align-items:center;}
+  .tl > div:nth-child(4n+3).t{background:var(--gold700);}
+
+  /* golden rules */
+  .rules{margin:6px 0;}
+  .rules .r{display:flex; margin-bottom:6px;}
+  .rules .r .n{width:46px; min-width:46px; background:var(--gold600); color:#fff; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center;}
+  .rules .r .x{flex:1; background:var(--mist); padding:9px 14px; font-size:11px; font-weight:600; color:var(--ink); display:flex; align-items:center;}
+  .rules .r:nth-child(3n+1) .n{background:var(--ink);}
+  .rules .r:nth-child(3n+2) .n{background:var(--sage600);}
+  .rules .r:nth-child(3n) .n{background:var(--gold700);}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .muted{color:var(--muted);}
+  .small{font-size:10px;}
+
+  /* ===== COVER ===== */
+  .cover{background:var(--ink2); color:#fff; padding:0; overflow:hidden;}
+  .cover .circle{position:absolute; border-radius:50%;}
+  .cover .c1{width:340px; height:340px; top:-70px; right:-70px; background:radial-gradient(circle at 30% 30%, #34301f, #1d190e);}
+  .cover .c2{width:300px; height:300px; bottom:40px; right:-90px; background:radial-gradient(circle at 40% 40%, #2b2716, #1a160c);}
+  .cover .leftbar{position:absolute; left:0; top:0; bottom:0; width:14px; background:linear-gradient(180deg,var(--gold500),var(--gold700));}
+  .cover .inner{position:relative; padding:34mm 22mm; height:100%; display:flex; flex-direction:column;}
+  .cover .logo{height:84px; width:84px; object-fit:contain; align-self:flex-start; margin-bottom:26px;}
+  .cover .eyebrow{font-size:12px; letter-spacing:.42em; color:var(--gold500); font-weight:700; margin-bottom:14px;}
+  .cover .accent{width:56px; height:5px; background:var(--gold500); border-radius:3px; margin-bottom:26px;}
+  .cover h1{font-size:52px; line-height:1.04; font-weight:800; letter-spacing:-.02em; margin:0 0 10px; max-width:15ch;}
+  .cover .sub{font-size:22px; color:var(--gold500); font-weight:700; margin-bottom:26px;}
+  .cover .intro{font-size:13px; color:#cfc8b6; max-width:44ch; line-height:1.6; margin-bottom:30px;}
+  .cover .princ{list-style:none; padding:0; margin:0;}
+  .cover .princ li{position:relative; padding:5px 0 5px 20px; font-size:12px; color:#e6e0d2;}
+  .cover .princ li:before{content:""; position:absolute; left:0; top:11px; width:8px; height:8px; border-radius:50%; background:var(--gold500);}
+  .cover .meta{margin-top:auto;}
+  .cover .meta .v{font-size:11px; color:#8f886f; margin-bottom:5px;}
+  .cover .meta .conf{font-size:11px; color:#cfc8b6; font-weight:700;}
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1 — COVER ===================== -->
+<section class="page cover">
+  <span class="circle c1"></span>
+  <span class="circle c2"></span>
+  <span class="leftbar"></span>
+  <div class="inner">
+    <img class="logo" src="assets/symbol-white.png" alt="Clínica Marques dos Santos">
+    <div class="eyebrow">CLÍNICA MARQUES DOS SANTOS</div>
+    <div class="accent"></div>
+    <h1>Manual do Colaborador</h1>
+    <div class="sub">Uma nova perspectiva de cuidar.</div>
+    <p class="intro">Tudo o que precisas para trabalhar connosco — passo a passo, sem depender de memória. Do primeiro atendimento à última sessão, sempre da mesma forma cuidada.</p>
+    <ul class="princ">
+      <li>O protocolo é o teu formador.</li>
+      <li>Se não está escrito, não existe.</li>
+      <li>Na dúvida, pergunta — melhorar este manual também é cuidar.</li>
+    </ul>
+    <div class="meta">
+      <div class="v">Edição Colaborador · v1.0 · Julho de 2026 · Documento vivo</div>
+      <div class="conf">Uso interno da Clínica Marques dos Santos · Confidencial</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PAGE 2 — BEM-VINDO ===================== -->
+<section class="page">
+  <h1 class="h first" style="font-size:20px;color:var(--ink);">Bem-vindo(a) à Clínica Marques dos Santos</h1>
+  <p class="lead">Este manual é o teu mapa. A clínica funciona como um <strong>sistema organizado</strong>: o conjunto de regras, protocolos, ferramentas e rotinas que permite cuidar de cada pessoa com o mesmo rigor, todos os dias. Na prática, isto significa uma coisa muito boa para ti: <strong>nunca vais depender da memória, de adivinhar, nem de perguntar tudo a toda a hora</strong>. Cada tarefa tem instruções escritas, cada ferramenta tem um papel, e cada dúvida tua é uma oportunidade de melhorar o manual.</p>
+
+  <div class="h">A arquitetura — cada peça tem um papel</div>
+  <div class="grid">
+    <div class="cell c-gold"><b>Software de gestão</b><p>O cérebro. Agenda, fichas clínicas e faturação num só lugar.</p></div>
+    <div class="cell c-ink"><b>Ficha clínica</b><p>A memória de cada paciente. Tudo o que se sabe, escrito.</p></div>
+    <div class="cell c-sage"><b>Protocolos (SOPs)</b><p>As receitas passo a passo de cada tarefa.</p></div>
+    <div class="cell c-ink"><b>Agenda</b><p>O coração do dia. Quem vem, quando e com quem.</p></div>
+    <div class="cell c-sage"><b>Receção</b><p>A primeira e a última cara que o paciente vê.</p></div>
+    <div class="cell c-gold"><b>Checklists</b><p>O sistema de segurança. Impedem esquecimentos e erros.</p></div>
+    <div class="cell c-sage"><b>Faturação e reembolsos</b><p>ADSE, SAMS, seguros e recibos — sem erros.</p></div>
+    <div class="cell c-gold"><b>Comunicação</b><p>Telefone, email e WhatsApp Business — um canal, uma voz.</p></div>
+    <div class="cell c-ink"><b>Redes sociais</b><p>Instagram e Facebook — a montra da clínica.</p></div>
+    <div class="cell c-gold"><b>Cofre de acessos</b><p>Todas as palavras-passe, num só lugar seguro.</p></div>
+    <div class="cell c-sage"><b>Revisões</b><p>A melhoria contínua. Momentos fixos para corrigir e melhorar.</p></div>
+    <div class="cell c-ink"><b>Equipa clínica</b><p>Fisioterapeutas, osteopatas e mais — o cuidado em pessoa.</p></div>
+  </div>
+
+  <div class="h">Como trabalhamos: a simplicidade vence sempre</div>
+  <p style="font-size:10.5px;color:var(--slate);margin-bottom:5px;">Sempre que existirem duas formas de executar uma tarefa, escolhe-se a mais simples, desde que seja segura e cuide bem do paciente. Nada entra no nosso trabalho sem responder «sim» a pelo menos uma das <strong>7 perguntas</strong>:</p>
+  <table>
+    <tr><td style="width:50%"><b>1.</b> Poupa tempo?</td><td><b>5.</b> Permite delegar com segurança?</td></tr>
+    <tr><td><b>2.</b> Reduz erros?</td><td><b>6.</b> Pode simplificar-se ou automatizar-se?</td></tr>
+    <tr><td><b>3.</b> Facilita o atendimento?</td><td><b>7.</b> Melhora a experiência do paciente?</td></tr>
+    <tr><td><b>4.</b> Melhora a qualidade do cuidado?</td><td>Se «não» a todas: <b>elimina-se.</b></td></tr>
+  </table>
+
+  <div class="box neutral">
+    <h4>O teste dos 60 anos — a norma de qualidade da casa</h4>
+    <p>«Uma pessoa portuguesa com cerca de 60 anos, que apenas utiliza o computador para consultar emails, navegar na internet e editar documentos simples, consegue seguir estas instruções sem pedir ajuda?» Foi assim que este manual foi escrito — e é assim que vais escrever as melhorias que propuseres. Se leres uma secção e não perceberes, a culpa <strong>não é tua: é do manual</strong>. Diz-nos, e corrigimos.</p>
+  </div>
+
+  <div class="h">Como utilizar este manual</div>
+  <ul class="clean">
+    <li><strong>Não é para ler de uma vez.</strong> Na primeira semana, os Módulos 00, 04 e 13 chegam.</li>
+    <li>Cada módulo é independente — consulta-se quando é preciso.</li>
+    <li>É um <strong>documento vivo</strong>: cada atendimento pode melhorar uma linha.</li>
+    <li><strong>O sistema protege-te:</strong> quem segue os protocolos nunca depende de memória nem leva culpas injustas — o que está escrito defende-te.</li>
+  </ul>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 2</div></div>
+</section>
+
+<!-- ===================== PAGE 3 — ÍNDICE ===================== -->
+<section class="page">
+  <h1 class="h first" style="font-size:20px;color:var(--ink);">Índice do manual</h1>
+  <p class="lead">Quinze módulos. Cada um responde a uma pergunta do teu dia a dia.</p>
+  <table>
+    <tr><th style="width:70px;">Módulo</th><th style="width:210px;">Nome</th><th>A pergunta a que responde</th></tr>
+    <tr><td>00</td><td>Começar Aqui</td><td>O que faço na primeira semana?</td></tr>
+    <tr><td>01</td><td>Centro de Comando</td><td>O que devo olhar e fazer hoje?</td></tr>
+    <tr><td>02</td><td>A Clínica</td><td>O que fazemos, para quem e porquê?</td></tr>
+    <tr><td>03</td><td>Operações Clínicas</td><td>Como cuido com qualidade, sempre da mesma forma?</td></tr>
+    <tr><td>04</td><td>Pacientes</td><td>Como falamos (e não falamos) com pacientes?</td></tr>
+    <tr><td>05</td><td>Marcações e Agenda</td><td>Como se gere a agenda, as marcações e as faltas?</td></tr>
+    <tr><td>06</td><td>Serviços e Especialidades</td><td>O que está no catálogo e o que respondo a pacientes?</td></tr>
+    <tr><td>07</td><td>Protocolos (SOPs)</td><td>Onde estão as instruções de cada tarefa?</td></tr>
+    <tr><td>08</td><td>Faturação e Reembolsos</td><td>Como se cobra, se emite recibo e se pede reembolso?</td></tr>
+    <tr><td>09</td><td>Registos e Conhecimento</td><td>Onde guardo o que registo e como nomeio ficheiros?</td></tr>
+    <tr><td>10</td><td>Reporte</td><td>O que comunico, a quem e quando?</td></tr>
+    <tr><td>11</td><td>Rotinas e Revisões</td><td>Quais são os meus rituais diários e semanais?</td></tr>
+    <tr><td>12</td><td>Integração e Evolução</td><td>Como ganho autonomia e cresço na equipa?</td></tr>
+    <tr><td>13</td><td>Segurança e Confidencialidade</td><td>O que devo proteger sempre — sem exceções?</td></tr>
+    <tr><td>14</td><td>Modelos</td><td>Que templates uso no dia a dia?</td></tr>
+  </table>
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 3</div></div>
+</section>
+
+<!-- ===================== PAGE 4 — MÓDULO 00 ===================== -->
+<section class="page">
+  <div class="mod ink"><div class="num">00</div><div class="bar"><h2>Começar Aqui</h2><p>A tua porta de entrada — o primeiro dia, o glossário e as ferramentas que vais usar.</p></div></div>
+
+  <div class="h first">O teu primeiro dia — passo a passo</div>
+  <ol class="steps">
+    <li><strong>Recebe os teus acessos</strong> do responsável: email de trabalho, convite para o cofre de palavras-passe e acesso ao software de gestão da clínica (agenda e fichas).</li>
+    <li><strong>Ativa a verificação em 2 passos (2FA)</strong> no email e no cofre — o responsável mostra como; demora 5 minutos e é obrigatório.</li>
+    <li>Faz a <strong>visita guiada ao espaço</strong>: receção, gabinetes, estúdio de pilates, zona de higienização, saídas de emergência e mala de primeiros socorros.</li>
+    <li><strong>Resultado esperado:</strong> consegues abrir a agenda do dia, ver as consultas marcadas e identificar cada gabinete e cada colega de serviço.</li>
+    <li><strong>Como confirmar:</strong> abre a agenda de hoje — deve mostrar os pacientes por hora e profissional. Se algo não abrir, diz ao responsável nesse momento (não «fica para depois»).</li>
+    <li>Lê o resto deste Módulo 00 e os Módulos 04 (Pacientes) e 13 (Segurança). É a tua leitura do dia 1 — mais nada.</li>
+  </ol>
+
+  <div class="box sage">
+    <h4>As 3 regras diárias (valem para todos, incluindo a direção)</h4>
+    <p><strong>1. Tudo entra na agenda ou na ficha.</strong> Pedido, recado, alteração — regista-se no momento, no sítio certo. Nada fica «na cabeça». <strong>2. Se não está escrito, não existe.</strong> Combinados com pacientes e colegas escrevem-se na hora. <strong>3. À terceira repetição, propõe-se simplificar.</strong> Tarefa manual feita 3 vezes regista-se como proposta de melhoria.</p>
+  </div>
+
+  <div class="box alert">
+    <h4>O que não fazer (em nenhuma circunstância)</h4>
+    <p>Não alterar protocolos por conta própria — propor melhorias sim, editar não. Não guardar palavras-passe em notas ou mensagens (só no cofre). Não usar contas ou números pessoais para falar com pacientes. Não apagar registos clínicos — na dúvida, pergunta. Não dar diagnósticos, preços ou prazos que não estão confirmados (Módulos 04 e 08). Não falar de pacientes fora da clínica: estamos obrigados ao sigilo.</p>
+  </div>
+
+  <div class="h">Glossário básico — os termos explicados de forma simples</div>
+  <table>
+    <tr><th style="width:170px;">Termo</th><th>O que significa</th></tr>
+    <tr><td>Ficha clínica</td><td>O registo de tudo o que diz respeito a um paciente: dados, avaliações, sessões e evolução.</td></tr>
+    <tr><td>Episódio</td><td>Um motivo de tratamento com início, plano e alta (ex.: «lombalgia — 8 sessões»).</td></tr>
+    <tr><td>Anamnese</td><td>A recolha inicial da história do paciente: queixa, antecedentes e objetivos.</td></tr>
+    <tr><td>Triagem</td><td>Perceber, à entrada, qual a especialidade e a urgência certas para o paciente.</td></tr>
+    <tr><td>Protocolo / SOP</td><td>Procedimento Operacional Padrão: a receita passo a passo de uma tarefa.</td></tr>
+    <tr><td>Reavaliação</td><td>Momento fixo (ex.: a cada 4 sessões) para medir progresso e ajustar o plano.</td></tr>
+    <tr><td>Consentimento informado</td><td>Autorização escrita do paciente depois de lhe ser explicado o que vai ser feito.</td></tr>
+    <tr><td>No-show / falta</td><td>Paciente que não comparece nem avisa. Tem regras próprias (Módulo 05).</td></tr>
+  </table>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 4</div></div>
+</section>
+
+<!-- ===================== PAGE 5 — GLOSSÁRIO + FERRAMENTAS ===================== -->
+<section class="page">
+  <table>
+    <tr><th style="width:170px;">Termo</th><th>O que significa</th></tr>
+    <tr><td>Reembolso / comparticipação</td><td>Parte do valor que a ADSE, os SAMS ou um seguro devolvem ao paciente mediante recibo.</td></tr>
+    <tr><td>Fatura-recibo</td><td>Documento oficial da consulta, com os dados fiscais do paciente. Base de qualquer reembolso.</td></tr>
+    <tr><td>Fisiatra</td><td>Médico de Medicina Física e de Reabilitação. Prescreve e valida planos para reembolso.</td></tr>
+    <tr><td>Cofre de acessos</td><td>Programa onde ficam guardadas todas as palavras-passe da clínica, de forma segura.</td></tr>
+    <tr><td>Sigilo profissional</td><td>Dever de nunca revelar informação de um paciente. Vale durante e depois da colaboração.</td></tr>
+    <tr><td>Dados de saúde</td><td>Informação clínica. É uma categoria especial do RGPD — protege-se com o máximo cuidado.</td></tr>
+    <tr><td>RGPD</td><td>Lei europeia de proteção de dados. Obriga a consentimento, sigilo e segurança.</td></tr>
+    <tr><td>Higienização</td><td>Limpeza e desinfeção do gabinete e do material entre pacientes. Nunca se salta.</td></tr>
+  </table>
+
+  <div class="h">As ferramentas que vais usar</div>
+  <table class="sage">
+    <tr><th style="width:180px;">Ferramenta</th><th>Para que a usas</th><th style="width:150px;">Quando</th></tr>
+    <tr><td>Software de gestão</td><td>Ver a agenda, marcar, abrir e atualizar fichas clínicas, faturar</td><td>Todos os dias</td></tr>
+    <tr><td>Cofre de acessos</td><td>Aceder a palavras-passe partilhadas contigo</td><td>Todos os dias</td></tr>
+    <tr><td>Telefone / WhatsApp Business</td><td>Marcar, confirmar e responder a pacientes pelo canal oficial</td><td>Todos os dias</td></tr>
+    <tr><td>Email de trabalho</td><td>Confirmações, envio de recibos e documentos de reembolso</td><td>Todos os dias</td></tr>
+    <tr><td>Terminal de pagamento</td><td>Receber pagamentos e emitir o comprovativo</td><td>Ao fim de cada consulta</td></tr>
+    <tr><td>Portais ADSE / SAMS / seguros</td><td>Validar comparticipações e submeter reembolsos</td><td>Quando aplicável</td></tr>
+    <tr><td>Instagram / Facebook</td><td>Publicar conteúdo aprovado e responder a mensagens</td><td>Em comunicação</td></tr>
+  </table>
+
+  <div class="box">
+    <h4>Antes de tocares num paciente ou numa ficha</h4>
+    <p>Confirma sempre três coisas: <strong>é a pessoa certa</strong> (nome e data de nascimento), <strong>é a consulta certa</strong> (especialidade e profissional na agenda) e <strong>o gabinete está higienizado e preparado</strong>. Trinta segundos que evitam 90% dos enganos.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 5</div></div>
+</section>
+
+<!-- ===================== PAGE 6 — MÓDULO 01 ===================== -->
+<section class="page">
+  <div class="mod"><div class="num">01</div><div class="bar"><h2>Centro de Comando</h2><p>A agenda do dia, aberta todas as manhãs. Tudo o que importa, num relance.</p></div></div>
+
+  <div class="h first">O que a agenda te mostra (e nada mais)</div>
+  <ul class="clean">
+    <li><strong>As tuas 3 prioridades do dia</strong> — nunca mais de 3, escritas por ti todas as manhãs.</li>
+    <li><strong>Consultas de hoje</strong> por hora, profissional e gabinete.</li>
+    <li><strong>Confirmações pendentes</strong> e primeiras consultas (que precisam de mais tempo).</li>
+    <li><strong>Alertas</strong> — faltas por remarcar, reembolsos por submeter, pacientes sem resposta há 2+ dias.</li>
+  </ul>
+
+  <div class="h">A matriz de decisão — contra a sobrecarga mental</div>
+  <p style="font-size:10.5px;color:var(--slate);margin-bottom:4px;">Perante qualquer tarefa nova, percorre estas perguntas <strong>por esta ordem</strong>:</p>
+  <table>
+    <tr><th>Pergunta (por ordem)</th><th style="width:220px;">Se a resposta mandar, a ação é</th></tr>
+    <tr><td>1. Acrescenta valor ao paciente ou à clínica? Se não…</td><td><span class="tag-alert">ELIMINAR</span> (confirma antes com o responsável)</td></tr>
+    <tr><td>2. Já foi feita 3+ vezes e é repetitiva?</td><td><span class="tag-gold">PROPOR SIMPLIFICAR</span> (fila de melhorias)</td></tr>
+    <tr><td>3. Está acima da tua alçada (clínica, preço, promessa)?</td><td><span class="tag-gold">ESCALAR</span> ao responsável</td></tr>
+    <tr><td>4. Tem de ser feita hoje? Se não…</td><td><span class="tag-sage">AGENDAR</span> (com data, nunca «logo se vê»)</td></tr>
+    <tr><td>5. Sobrou?</td><td><span class="tag-sage">FAZER</span> (entra nas 3 prioridades)</td></tr>
+  </table>
+
+  <div class="h">Os 5 tipos de trabalho — para saberes onde está o teu dia</div>
+  <table class="ink">
+    <tr><th style="width:130px;">Tipo</th><th>O que é</th><th style="width:190px;">O teu papel</th></tr>
+    <tr><td>Clínico</td><td>Avaliações e sessões com pacientes, seguindo protocolos.</td><td><strong>O teu foco principal</strong> (se és da equipa clínica)</td></tr>
+    <tr><td>Atendimento</td><td>Receção, agenda, telefone, pagamentos e reembolsos.</td><td>O teu foco principal (se és da receção)</td></tr>
+    <tr><td>Administrativo</td><td>Emails, organização, arrumação de registos.</td><td>1 bloco fixo por dia</td></tr>
+    <tr><td>Melhorável</td><td>Repetitivo ou confuso.</td><td>Regista e propõe (fila de melhorias)</td></tr>
+    <tr><td>Eliminável</td><td>Não passa nas 7 perguntas.</td><td>Zero</td></tr>
+  </table>
+
+  <div class="box">
+    <h4>Regra 80/20</h4>
+    <p>80% dos resultados vêm de 20% das tarefas. As tuas 3 prioridades diárias saem desses 20% — quase sempre trabalho clínico ou de atendimento com hora marcada, quase nunca administrativo.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 6</div></div>
+</section>
+
+<!-- ===================== PAGE 7 — UM DIA TÍPICO ===================== -->
+<section class="page">
+  <h1 class="h first" style="font-size:19px;color:var(--ink);">Um dia típico na clínica</h1>
+  <p class="lead">Para veres como os módulos encaixam na prática. Os horários são um exemplo — o que é fixo são os rituais. A clínica abre das <strong>09:00 às 20:00</strong> (sábado até às 13:00).</p>
+  <div class="tl">
+    <div class="t"><b>08h45</b><span>Abertura (10 min)</span></div>
+    <div class="d">Abrir a clínica · ligar sistemas · conferir a agenda do dia · escrever as 3 prioridades. Gabinetes higienizados e prontos.</div>
+    <div class="t"><b>09h00</b><span>Primeiras consultas</span></div>
+    <div class="d">Acolhimento, check-in e primeiras sessões, com o protocolo à mão. As avaliações iniciais têm mais tempo reservado.</div>
+    <div class="t"><b>11h30</b><span>Pacientes e comunicação</span></div>
+    <div class="d">Responder dentro do prazo de 1 dia útil · confirmar consultas do dia seguinte · atualizar fichas à medida que avanças.</div>
+    <div class="t"><b>13h00</b><span>Pausa / almoço</span></div>
+    <div class="d">A sério. O sistema funciona precisamente para ninguém almoçar a olhar para o ecrã.</div>
+    <div class="t"><b>14h00</b><span>Bloco da tarde</span></div>
+    <div class="d">Consultas e sessões · marcar as checklists na ficha à medida que avanças · reavaliações agendadas.</div>
+    <div class="t"><b>18h30</b><span>Faturação e reembolsos</span></div>
+    <div class="d">Emitir recibos em falta · submeter reembolsos · confirmar pagamentos do dia · tratar remarcações.</div>
+    <div class="t"><b>19h50</b><span>Fecho (10 min)</span></div>
+    <div class="d">Fecho de caixa · check-in do dia no canal interno: o que correu bem · o que ficou pendente · o que preciso amanhã.</div>
+  </div>
+
+  <div class="box neutral">
+    <h4>À sexta-feira</h4>
+    <p>O último bloco dá lugar aos rituais semanais: resumo da semana, conferência de reembolsos submetidos, pendentes e o bloco administrativo (Módulo 11). É também o dia de rever o stock de material clínico e consumíveis.</p>
+  </div>
+
+  <div class="box sage">
+    <h4>O bloco mais valioso do dia</h4>
+    <p>A primeira consulta da manhã com um paciente novo define a relação inteira. Telemóvel em silêncio, ficha lida antes de o chamar, tempo para ouvir. Vale por dez sessões apressadas.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 7</div></div>
+</section>
+
+<!-- ===================== PAGE 8 — MÓDULO 02 ===================== -->
+<section class="page">
+  <div class="mod gold2"><div class="num">02</div><div class="bar"><h2>A Clínica</h2><p>O que fazemos, para quem e porquê — para falares do nosso trabalho com confiança.</p></div></div>
+
+  <div class="h first">Quem somos</div>
+  <table>
+    <tr><td style="width:150px;"><b>Missão</b></td><td>Uma nova perspectiva de cuidar: tempo, rigor e um plano à medida para cada pessoa, do primeiro dia à última sessão.</td></tr>
+    <tr><td><b>O que fazemos</b></td><td>Fisioterapia, osteopatia e mais de vinte consultas e especialidades médicas, em Castelo Branco.</td></tr>
+    <tr><td><b>Quem cuidamos</b></td><td>Pessoas com dor, lesão ou em recuperação — e quem procura prevenção, bem-estar e acompanhamento próximo.</td></tr>
+    <tr><td><b>O que nos distingue</b></td><td>Acompanhamento próximo com qualidade constante — porque trabalhamos por sistema, não por improviso. Médico fisiatra para reembolsos ADSE/SAMS. Este manual é a prova.</td></tr>
+  </table>
+
+  <div class="h">O catálogo de serviços (tabela em vigor)</div>
+  <table class="ink">
+    <tr><th>Serviço</th><th style="width:120px;">Duração</th><th style="width:120px;">Valor</th></tr>
+    <tr><td>Avaliação Inicial</td><td>60 min</td><td><b>400 €</b></td></tr>
+    <tr><td>Sessão de Fisioterapia</td><td>50 min</td><td><b>350 €</b></td></tr>
+    <tr><td>Consulta de Osteopatia</td><td>50 min</td><td><b>400 €</b></td></tr>
+    <tr><td>Reabilitação Perineal</td><td>60 min</td><td><b>450 €</b></td></tr>
+    <tr><td>Reabilitação Estética</td><td>50 min</td><td><b>400 €</b></td></tr>
+    <tr><td>Consulta de Podoposturologia</td><td>60 min</td><td><b>450 €</b></td></tr>
+    <tr><td>Terapia da Fala</td><td>45 min</td><td><b>350 €</b></td></tr>
+    <tr><td>Consulta de Psicologia</td><td>50 min</td><td><b>450 €</b></td></tr>
+  </table>
+
+  <div class="box alert">
+    <h4>Importante — preços e âmbito</h4>
+    <p>Estes são os valores da tabela em vigor. Pacotes, descontos e qualquer serviço fora desta lista são <strong>sempre confirmados pela direção</strong> — nunca fechas valores por conta própria. Se um paciente pedir algo fora do catálogo, a resposta certa é: «Boa pergunta — deixe-me confirmar e respondo ainda hoje.»</p>
+  </div>
+
+  <div class="box sage">
+    <h4>Porque é que o acompanhamento importa</h4>
+    <p>Planos completos e consultas de continuidade (reavaliações, pilates, manutenção) são o que dá estabilidade à clínica — e ao teu posto. O teu papel: cuidar tão bem que a próxima sessão se marca sozinha. Um paciente que se sente ouvido volta, e recomenda.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 8</div></div>
+</section>
+
+<!-- ===================== PAGE 9 — MÓDULO 03 ===================== -->
+<section class="page">
+  <div class="mod sage"><div class="num">03</div><div class="bar"><h2>Operações Clínicas</h2><p>Como se cuida com qualidade, sempre da mesma forma.</p></div></div>
+
+  <div class="h first">A jornada do paciente — 7 estados, sempre pela mesma ordem</div>
+  <div class="flow sage">
+    <div>contacto</div><div>marcado</div><div>em avaliação</div><div>em tratamento</div><div>reavaliação</div><div>alta</div><div>seguimento</div>
+  </div>
+  <table class="sage">
+    <tr><th style="width:150px;">Estado</th><th>O que significa</th><th style="width:200px;">Só avança quando…</th></tr>
+    <tr><td>contacto</td><td>Pedido recebido, ainda por marcar</td><td>Consulta marcada e confirmada</td></tr>
+    <tr><td>marcado</td><td>Data marcada, à espera do dia</td><td>Paciente comparece e faz check-in</td></tr>
+    <tr><td>em avaliação</td><td>Avaliação inicial e plano</td><td>Plano de tratamento definido e explicado</td></tr>
+    <tr><td>em tratamento</td><td>Sessões a decorrer (é aqui que mais trabalhas)</td><td>Atingido o marco de reavaliação</td></tr>
+    <tr><td>reavaliação</td><td>Medir progresso e ajustar</td><td>Objetivos cumpridos ou plano revisto</td></tr>
+    <tr><td>alta</td><td>Objetivos atingidos, alta dada</td><td>Alta registada e explicada ao paciente</td></tr>
+    <tr><td>seguimento</td><td>Acompanhamento ou manutenção</td><td>—</td></tr>
+  </table>
+
+  <div class="box sage">
+    <h4>Regra de ouro das operações</h4>
+    <p>Nunca se inicia um tratamento sem <strong>avaliação feita e consentimento registado</strong>, e nunca se avança de plano sem <strong>reavaliação</strong>. Antes de pegares numa sessão, confirma na ficha: avaliação e consentimento «sim». Se estiver «não», pára e pergunta.</p>
+  </div>
+
+  <div class="h">Controlo de qualidade — checklist antes e depois de cada consulta</div>
+  <p style="font-size:10.5px;color:var(--slate);margin:0 0 3px;">É a tua rede de segurança. Executa-a sempre, mesmo com pressa — sobretudo com pressa:</p>
+  <div class="check">
+    <p><span class="bx">[ ]</span> Paciente certo confirmado (nome + data de nascimento).</p>
+    <p><span class="bx">[ ]</span> Ficha lida antes da consulta; consentimento e contraindicações verificados.</p>
+    <p><span class="bx">[ ]</span> Gabinete e material higienizados antes e depois.</p>
+    <p><span class="bx">[ ]</span> Sessão registada na ficha no próprio dia (o que se fez e a resposta).</p>
+    <p><span class="bx">[ ]</span> Próxima sessão marcada e pagamento/recibo tratados.</p>
+    <p><span class="bx">[ ]</span> O paciente sabe o que fazer em casa (exercícios, cuidados, sinais de alerta).</p>
+  </div>
+
+  <div class="h">Fecho de um episódio — sempre os mesmos 4 passos</div>
+  <ol class="steps">
+    <li><strong>Alta e resumo</strong> (protocolo de alta): objetivos atingidos, recomendações e plano de manutenção, explicados ao paciente.</li>
+    <li><strong>Testemunho / avaliação</strong> — pede-se na alta, com a satisfação fresca (o responsável indica quando e quem pede).</li>
+    <li><strong>Proposta de continuidade</strong> — reavaliação futura, pilates ou manutenção, quando faz sentido clínico.</li>
+    <li><strong>Registo final na ficha</strong> — para que qualquer colega perceba o caso em segundos, hoje ou daqui a um ano.</li>
+  </ol>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 9</div></div>
+</section>
+
+<!-- ===================== PAGE 10 — MÓDULO 04 ===================== -->
+<section class="page">
+  <div class="mod"><div class="num">04</div><div class="bar"><h2>Pacientes</h2><p>Como falamos (e não falamos) com pacientes — a parte mais sensível do teu trabalho.</p></div></div>
+
+  <div class="box sage">
+    <h4>As 3 regras da comunicação (inegociáveis)</h4>
+    <p><strong>1. Um canal único e oficial por paciente</strong> (telefone/WhatsApp Business OU email — nunca números pessoais). <strong>2. Empatia primeiro:</strong> ouve, confirma que percebeste, só depois responde. Quem chega com dor chega também com receio. <strong>3. Prazo de resposta: 1 dia útil.</strong> Se não tens a resposta, responde na mesma: «recebi, estou a tratar, respondo até X».</p>
+  </div>
+
+  <div class="h">O que podes decidir vs. o que escala sempre</div>
+  <table>
+    <tr><th>Podes decidir tu</th><th>Escala SEMPRE ao responsável / profissional</th></tr>
+    <tr><td>Marcar, remarcar e organizar a agenda dentro das regras.</td><td>Diagnósticos, alterações ao plano clínico ou a exercícios.</td></tr>
+    <tr><td>Explicar como decorre uma consulta e o que trazer.</td><td>Preços, pacotes, descontos e condições de pagamento.</td></tr>
+    <tr><td>Responder a dúvidas simples já cobertas por protocolo ou FAQ.</td><td>Promessas de resultados ou prazos de recuperação.</td></tr>
+    <tr><td>Encaminhar para o profissional certo por triagem.</td><td>Queixas, insatisfação, tom agressivo ou incidentes.</td></tr>
+    <tr><td></td><td>Qualquer pedido de aconselhamento clínico fora da tua função.</td></tr>
+  </table>
+
+  <div class="box neutral">
+    <h4>A frase mágica para escalar sem perder o paciente</h4>
+    <p>«Boa pergunta — deixe-me confirmar com o profissional/equipa e respondo ainda hoje.» Nunca digas «não sei», nunca inventes um conselho clínico, nunca digas «sim» só para agradar. Regista o pedido na ficha e avisa a pessoa certa no momento.</p>
+  </div>
+
+  <div class="h">Como funciona a marcação (contexto para perceberes o processo)</div>
+  <p style="font-size:10.5px;color:var(--slate);">O paciente chega por telefone, WhatsApp, formulário do site ou presencialmente. Faz-se uma <strong>triagem simples</strong> (qual a queixa, que especialidade, que urgência) e marca-se com o profissional certo. A <strong>primeira consulta é sempre uma avaliação</strong> e reserva mais tempo. O plano de tratamento e o número de sessões saem dessa avaliação — nunca se prometem de antemão. Casos que envolvam reembolso ADSE/SAMS podem precisar de <strong>prescrição do fisiatra</strong>: confirma sempre antes (Módulo 08).</p>
+
+  <div class="h">Depois da consulta</div>
+  <ul class="clean">
+    <li><strong>Confirmação:</strong> a próxima sessão fica marcada antes de o paciente sair, sempre que possível.</li>
+    <li><strong>Lembrete:</strong> o sistema envia um lembrete automático na véspera; a receção confirma os casos sem resposta.</li>
+    <li><strong>Continuidade:</strong> reavaliação, manutenção ou nova especialidade são propostas pelo profissional, nunca «empurradas».</li>
+  </ul>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 10</div></div>
+</section>
+
+<!-- ===================== PAGE 11 — MÓDULO 05 ===================== -->
+<section class="page">
+  <div class="mod gold2"><div class="num">05</div><div class="bar"><h2>Marcações e Agenda</h2><p>A agenda é o coração da clínica. Bem gerida, ninguém espera e ninguém corre.</p></div></div>
+
+  <div class="h first">Os estados de uma marcação</div>
+  <div class="flow">
+    <div>pedido</div><div>confirmada</div><div>realizada</div><div>faturada</div><div>reembolso submetido</div>
+  </div>
+
+  <div class="h">As regras da agenda</div>
+  <ul class="clean">
+    <li><strong>Cada marcação tem: paciente, especialidade, profissional, gabinete e duração.</strong> Faltando um, a marcação não está completa.</li>
+    <li><strong>Primeiras consultas reservam mais tempo</strong> — nunca encaixar uma avaliação num espaço de sessão.</li>
+    <li><strong>Confirmação na véspera:</strong> o sistema envia lembrete; a receção confirma os que não responderam.</li>
+    <li><strong>Sobrelotação não existe:</strong> se a agenda de um profissional está cheia, encaixa-se noutro ou propõe-se a data seguinte — nunca se marca «por cima».</li>
+  </ul>
+
+  <div class="h">Faltas e remarcações</div>
+  <table>
+    <tr><th style="width:220px;">Situação</th><th>O que fazes</th></tr>
+    <tr><td>Paciente pede para remarcar</td><td>Remarca no momento, atualiza a agenda e liberta o horário para outro paciente.</td></tr>
+    <tr><td>Paciente avisa que não vem</td><td>Regista a falta justificada e reagenda. O horário livre entra na lista de espera.</td></tr>
+    <tr><td>Falta sem aviso (no-show)</td><td>Regista na ficha, contacta o paciente para reagendar e aplica a política de faltas em vigor.</td></tr>
+    <tr><td>Lista de espera</td><td>Quando abre um horário, contacta-se por ordem quem está à espera dessa especialidade.</td></tr>
+  </table>
+
+  <div class="box alert">
+    <h4>Nunca prometas o que a agenda não tem</h4>
+    <p>Se um paciente insiste por um horário que não existe, a resposta é: «não tenho essa vaga, mas deixe-me ver a primeira disponível e ligo-lhe ainda hoje.» Nunca marques «à força» nem sobrepões consultas — isso quebra o dia inteiro da equipa.</p>
+  </div>
+
+  <div class="box sage">
+    <h4>O que o sistema faz sozinho — e o teu plano B</h4>
+    <p>Os <strong>lembretes de consulta</strong> saem automaticamente na véspera. Se o envio falhar, o plano B é simples: a receção telefona a confirmar as consultas do dia seguinte, a partir da agenda. A clínica abranda, não pára.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 11</div></div>
+</section>
+
+<!-- ===================== PAGE 12 — MÓDULO 06 ===================== -->
+<section class="page">
+  <div class="mod ink"><div class="num">06</div><div class="bar"><h2>Serviços e Especialidades</h2><p>O catálogo em detalhe — e as respostas-tipo às perguntas dos pacientes.</p></div></div>
+
+  <p style="font-size:10.5px;color:var(--slate);">Cada serviço tem uma ficha na Biblioteca. Antes de atenderes sobre um serviço pela primeira vez, lê a ficha dele — diz-te o que está incluído, o que não está, quanto tempo demora e qual o protocolo a seguir:</p>
+  <div class="code"><span class="c">---</span>
+tipo: servico
+nome: Fisioterapia
+avaliacao_inicial: sim
+reembolso: [ADSE, SAMS, seguros]
+prescricao_fisiatra: quando aplicável
+protocolo: "[[Protocolo - Fisioterapia]]"
+<span class="c">---</span>
+## O que promete (uma frase, na linguagem do paciente)
+## O que inclui / não inclui
+## Duração típica e nº de sessões
+## Perguntas frequentes do paciente</div>
+
+  <div class="h">O que o paciente recebe em cada serviço</div>
+  <table>
+    <tr><th style="width:150px;">Serviço</th><th>O que o paciente recebe</th><th style="width:120px;">Duração típica</th></tr>
+    <tr><td>Fisioterapia</td><td>Avaliação, plano à medida e sessões com reavaliação a cada 4.</td><td>6–12 sessões</td></tr>
+    <tr><td>Osteopatia</td><td>Avaliação global e técnicas manuais, integradas com o plano.</td><td>Caso a caso</td></tr>
+    <tr><td>Reabilitação perineal</td><td>Avaliação especializada e treino funcional, em gabinete reservado.</td><td>6–10 sessões</td></tr>
+    <tr><td>Psicologia / nutrição</td><td>Consulta individual e plano de acompanhamento.</td><td>Recorrente</td></tr>
+    <tr><td>Pilates clínico</td><td>Aulas orientadas em pequeno grupo ou individuais.</td><td>Mensal</td></tr>
+    <tr><td>Podologia / palmilhas</td><td>Avaliação do apoio e palmilhas personalizadas.</td><td>1–2 consultas</td></tr>
+  </table>
+
+  <div class="h">Respostas-tipo a perguntas frequentes</div>
+  <table class="ink">
+    <tr><th style="width:230px;">O paciente pergunta</th><th>A resposta certa</th></tr>
+    <tr><td>«Isto fica mais barato se fizer um pacote?»</td><td>«As condições estão na nossa tabela — deixe-me confirmar e digo-lhe ainda hoje.»</td></tr>
+    <tr><td>«Quantas sessões vou precisar?»</td><td>«Isso define-se na avaliação inicial — não seria sério dizer-lhe um número sem avaliar.»</td></tr>
+    <tr><td>«A ADSE paga?»</td><td>«Há comparticipação; confirmo o seu caso e o que precisa (pode ser preciso o fisiatra) e explico tudo.»</td></tr>
+    <tr><td>«Posso ser visto hoje?»</td><td>Confirmar a agenda antes de responder — nunca prometer horários de cabeça.</td></tr>
+    <tr><td>«Isto vai doer?»</td><td>«O profissional explica-lhe tudo antes de começar e ajusta ao seu conforto — está em boas mãos.»</td></tr>
+  </table>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 12</div></div>
+</section>
+
+<!-- ===================== PAGE 13 — MÓDULO 07 ===================== -->
+<section class="page">
+  <div class="mod sage"><div class="num">07</div><div class="bar"><h2>Protocolos (SOPs)</h2><p>As instruções de cada tarefa. O protocolo é o teu formador.</p></div></div>
+
+  <p style="font-size:10.5px;color:var(--slate);">Um protocolo é a receita de uma tarefa, escrita para que qualquer pessoa a execute sem pedir ajuda. É a tua principal ferramenta de trabalho — e a razão pela qual nunca vais ouvir «devias saber isso»: se não está no protocolo, a falha é do sistema, não tua.</p>
+
+  <div class="h">Como executar um protocolo (o teu ritual)</div>
+  <ol class="steps">
+    <li>Abrir o protocolo e <strong>ler do princípio ao fim antes de começar</strong> — nunca executar a ler pela primeira vez.</li>
+    <li>Confirmar os <strong>pré-requisitos</strong> (paciente certo, consentimento, material, gabinete).</li>
+    <li>Seguir os passos <strong>pela ordem</strong>, marcando a checklist na ficha.</li>
+    <li>Comparar o resultado com o <strong>«resultado esperado»</strong> do protocolo.</li>
+    <li><strong>Se um passo não bater certo com a realidade: pára e pergunta.</strong> Não improvises — em saúde, o improviso de hoje é o risco de amanhã.</li>
+    <li>No fim, registar qualquer melhoria ou dúvida (secção «Registo de melhorias»).</li>
+  </ol>
+
+  <div class="h">O modelo oficial (todos os protocolos têm esta estrutura)</div>
+  <div class="code"><span class="c">---</span>
+tipo: protocolo
+estado: ativo        <span class="c"># rascunho | ativo | em revisão | arquivado</span>
+area: clínica        <span class="c"># clínica | atendimento | faturação</span>
+responsavel: [dono deste protocolo]
+versao: "1.0"
+ultima_revisao: 2026-07-21
+<span class="c">---</span>
+# Protocolo - [Nome da tarefa]
+## Objetivo (o que produz e porquê - uma frase)
+## Pré-requisitos (paciente, consentimento, material)
+## Passos (1 passo = 1 ação; indica onde e como)
+## Resultado esperado (como se sabe que ficou bem feito)
+## Erros comuns (o que costuma correr mal e como resolver)
+## Registo de melhorias (AAAA-MM-DD - o que mudou e porquê)</div>
+
+  <div class="box sage">
+    <h4>As tuas dúvidas são ouro</h4>
+    <p>Cada dúvida que tiveres ao executar um protocolo é uma melhoria por escrever. Propor melhorias aceites é a forma mais visível de creceres na equipa (Módulo 12) — o manual só é bom porque quem o usa o corrige.</p>
+  </div>
+
+  <div class="h">A biblioteca de protocolos (o que existe hoje)</div>
+  <table>
+    <tr><th style="width:36px;">#</th><th style="width:200px;">Protocolo</th><th>Resumo do processo</th></tr>
+    <tr><td>1</td><td>Atendimento e marcação</td><td>Triagem › escolha da especialidade › marcação › confirmação › lembrete.</td></tr>
+    <tr><td>2</td><td>Acolhimento e check-in</td><td>Receber, confirmar identidade e dados, encaminhar para o gabinete certo.</td></tr>
+    <tr><td>3</td><td>Avaliação inicial</td><td>Anamnese › avaliação › consentimento › plano › explicação ao paciente.</td></tr>
+    <tr><td>4</td><td>Higienização de gabinete</td><td>Limpeza e desinfeção de superfícies e material entre pacientes.</td></tr>
+    <tr><td>5</td><td>Faturação e recibo</td><td>Cobrança › fatura-recibo › comprovativo › registo na ficha.</td></tr>
+  </table>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 13</div></div>
+</section>
+
+<!-- ===================== PAGE 14 — MÓDULO 07 cont ===================== -->
+<section class="page">
+  <table>
+    <tr><th style="width:36px;">#</th><th style="width:200px;">Protocolo</th><th>Resumo do processo</th></tr>
+    <tr><td>6</td><td>Pedido de reembolso</td><td>ADSE / SAMS / seguros: documentos, submissão e registo do estado.</td></tr>
+    <tr><td>7</td><td>Remarcação e faltas</td><td>Remarcar, tratar no-shows e gerir a lista de espera.</td></tr>
+    <tr><td>8</td><td>Fecho de caixa e fecho da clínica</td><td>Conferência de pagamentos, fecho do dia e encerramento seguro do espaço.</td></tr>
+  </table>
+
+  <div class="box neutral">
+    <h4>Quem é o dono de cada protocolo</h4>
+    <p>Cada protocolo tem um campo <strong>responsavel</strong>. Esse campo é o mapa de quem faz o quê: se tens uma dúvida sobre uma área, o dono do protocolo é a pessoa a quem perguntar. Os protocolos clínicos pertencem aos profissionais da especialidade; os de atendimento e faturação, à receção e à direção.</p>
+  </div>
+
+  <div class="box alert">
+    <h4>Nunca se altera um protocolo clínico por conta própria</h4>
+    <p>Um protocolo clínico protege o paciente e a equipa. Propor melhorias é encorajado; alterá-lo sem validação do profissional responsável, nunca. Enquanto a mudança não está escrita e aprovada, executa-se o que está — mesmo que aches que há forma melhor. Depois propõe, com o porquê.</p>
+  </div>
+
+  <div class="box sage">
+    <h4>O protocolo defende-te</h4>
+    <p>Quem segue o protocolo e marca a checklist tem sempre como mostrar o que fez e porquê. Num ambiente de saúde, esse registo é a tua melhor proteção — e a garantia de que o paciente recebe sempre o mesmo cuidado, independentemente de quem está de serviço.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 14</div></div>
+</section>
+
+<!-- ===================== PAGE 15 — MÓDULO 08 ===================== -->
+<section class="page">
+  <div class="mod"><div class="num">08</div><div class="bar"><h2>Faturação e Reembolsos</h2><p>Como se cobra, se emite recibo e se ajuda o paciente a ser reembolsado — sem erros.</p></div></div>
+
+  <p style="font-size:10.5px;color:var(--slate);">Cada consulta termina com um pagamento e uma <strong>fatura-recibo</strong>. Esse documento é a base de qualquer reembolso — por isso os dados fiscais do paciente têm de estar certos. Tu não precisas de decidir preços; precisas de saber cobrar, emitir e submeter, e o que fazer quando algo falha.</p>
+
+  <div class="box sage">
+    <h4>As 3 regras (a tua versão)</h4>
+    <p><strong>1. Dados fiscais certos antes de faturar</strong> — nome, NIF e entidade (ADSE/SAMS/seguro) confirmados com o paciente. <strong>2. Recibo emitido no dia da consulta</strong> — nunca «fica para depois». <strong>3. Preços e descontos escalam sempre</strong> — a tabela em vigor e a direção decidem, tu aplicas.</p>
+  </div>
+
+  <div class="h">Comparticipações — o que faz e o teu plano B se falhar</div>
+  <table>
+    <tr><th style="width:150px;">Entidade</th><th>O que faz</th><th style="width:180px;">Plano B se falhar (fazes tu)</th></tr>
+    <tr><td>ADSE</td><td>Comparticipa consultas e sessões elegíveis, mediante recibo (e prescrição do fisiatra quando exigida).</td><td>Emitir a fatura-recibo com os dados certos e explicar ao paciente como submeter.</td></tr>
+    <tr><td>SAMS</td><td>Comparticipa segundo as suas regras próprias.</td><td>Confirmar a tabela SAMS em vigor e entregar o recibo detalhado.</td></tr>
+    <tr><td>Seguros de saúde</td><td>Pagamento direto ou reembolso, conforme a apólice.</td><td>Se o portal falhar, faturar particular e entregar recibo para o paciente submeter.</td></tr>
+    <tr><td>Particular</td><td>Paciente paga o valor de tabela.</td><td>Emitir recibo e, se pedido, o documento para o seguro.</td></tr>
+  </table>
+
+  <div class="h">Quando um pagamento ou portal falha</div>
+  <ol class="steps">
+    <li>Não entrar em pânico nem improvisar valores.</li>
+    <li>Ativar o plano B: faturar de forma que o paciente não fique preso à espera do sistema.</li>
+    <li>Registar na ficha: data, o que falhou, o que fizeste.</li>
+    <li>Avisar o responsável no canal interno, com a ligação para o registo.</li>
+  </ol>
+
+  <div class="box alert">
+    <h4>Nunca improvises reembolsos ou prescrições</h4>
+    <p>Se um paciente precisa de prescrição do fisiatra para a ADSE e ainda não a tem, <strong>não se avança como se tivesse</strong>. Explica-se o passo em falta e marca-se o que for preciso. Prometer um reembolso que depois não acontece destrói a confiança.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 15</div></div>
+</section>
+
+<!-- ===================== PAGE 16 — MÓDULO 09 ===================== -->
+<section class="page">
+  <div class="mod gold2"><div class="num">09</div><div class="bar"><h2>Registos e Conhecimento</h2><p>Onde guardas o que registas — e a norma de nomes de todos os ficheiros.</p></div></div>
+
+  <table>
+    <tr><th>GUARDA-SE aqui</th><th>NÃO se guarda aqui</th></tr>
+    <tr><td><strong>Ficha clínica</strong> — avaliações, sessões e evolução de cada paciente, no software de gestão.</td><td><strong>Palavras-passe e acessos</strong> — vão para o cofre, sempre.</td></tr>
+    <tr><td><strong>Consentimentos</strong> — assinados e associados à ficha do paciente.</td><td><strong>Dados de saúde em ficheiros soltos</strong> — nunca no ambiente de trabalho nem em telemóveis pessoais.</td></tr>
+    <tr><td><strong>Registo de decisões</strong> — data, decisão, porquê. Elimina o «porque é que fizemos assim?».</td><td><strong>Fotografias clínicas sem consentimento</strong> — não se tiram nem se guardam.</td></tr>
+    <tr><td><strong>Aprendizagens e boas práticas</strong> — o que resulta bem e serve para os próximos.</td><td><strong>Conversas de pacientes</strong> — não se comentam fora da clínica, nunca.</td></tr>
+    <tr><td><strong>Perguntas frequentes</strong> — pergunta respondida 2x ganha resposta-tipo.</td><td></td></tr>
+  </table>
+
+  <div class="box neutral">
+    <h4>Norma de nomes de ficheiros (duas regras, sem exceções)</h4>
+    <p><strong>Notas datadas</strong> (reuniões, decisões, relatórios): <strong>AAAA-MM-DD — Tipo — Nome.</strong> Ex.: «2026-07-21 — Reunião — Equipa Clínica».<br>
+    <strong>Notas permanentes</strong> (protocolos, fichas de serviço): <strong>Tipo — Nome.</strong> Ex.: «Protocolo — Avaliação Inicial», «Serviço — Osteopatia».<br>
+    A consistência é o que permite a qualquer pessoa encontrar tudo em segundos — incluindo tu daqui a 6 meses.</p>
+  </div>
+
+  <div class="box alert">
+    <h4>Dados de saúde são categoria especial</h4>
+    <p>A ficha clínica é a informação mais sensível que existe. Só se acede ao que se precisa para cuidar, nunca por curiosidade. Cada acesso fica registado. Consultar a ficha de alguém sem motivo de trabalho é uma falha grave — mesmo que seja um conhecido.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 16</div></div>
+</section>
+
+<!-- ===================== PAGE 17 — MÓDULO 10 ===================== -->
+<section class="page">
+  <div class="mod"><div class="num">10</div><div class="bar"><h2>Reporte</h2><p>O que comunicas, a quem e quando — factos, não culpas.</p></div></div>
+
+  <div class="h first">Os teus 2 reportes fixos</div>
+  <table>
+    <tr><th style="width:150px;">Reporte</th><th style="width:180px;">Quando</th><th>O que contém (3 linhas chegam)</th></tr>
+    <tr><td><b>Check-in diário</b></td><td>Fim do dia, no canal interno</td><td>O que correu bem · o que ficou pendente · o que preciso para amanhã.</td></tr>
+    <tr><td><b>Resumo semanal</b></td><td>Sexta-feira, antes de sair</td><td>Semana em números (consultas, faltas, reembolsos) · pendentes · riscos à vista.</td></tr>
+  </table>
+
+  <div class="h">Como reportar um problema (o método dos 5 pontos)</div>
+  <ol class="steps">
+    <li><strong>O quê:</strong> o que aconteceu, em factos («o portal da ADSE não aceitou 3 reembolsos»).</li>
+    <li><strong>Quando:</strong> desde quando, e como deste conta.</li>
+    <li><strong>Impacto:</strong> quem é afetado (paciente? agenda? faturação? segurança?).</li>
+    <li><strong>O que já tentaste:</strong> plano B ativado? protocolo consultado?</li>
+    <li><strong>Proposta:</strong> o que sugeres fazer. Mesmo que esteja errada, poupa metade da conversa.</li>
+  </ol>
+
+  <div class="box neutral">
+    <h4>Cultura de erro — lê isto duas vezes</h4>
+    <p>Erros reportados cedo são baratos; erros escondidos são caros — e, em saúde, podem ser perigosos. Aqui <strong>nunca ninguém é castigado por reportar um erro próprio no dia em que acontece</strong> — a revisão pergunta sempre «o que falhou no sistema?», não «quem falhou?». O que quebra a confiança é esconder, não errar.</p>
+  </div>
+
+  <div class="h">Os indicadores do teu trabalho (o que a clínica acompanha)</div>
+  <table class="ink">
+    <tr><th style="width:180px;">Indicador</th><th>Pergunta a que responde</th><th style="width:200px;">Sinal de alarme</th></tr>
+    <tr><td>Pontualidade da agenda</td><td>Os pacientes são atendidos à hora?</td><td>Atrasos repetidos sem aviso</td></tr>
+    <tr><td>Faltas (no-show)</td><td>Estamos a perder horários?</td><td>Subida de faltas sem seguimento</td></tr>
+    <tr><td>Registos completos</td><td>Cada sessão ficou registada?</td><td>Fichas por preencher ao fim do dia</td></tr>
+    <tr><td>Satisfação do paciente</td><td>As pessoas sentem-se cuidadas?</td><td>Queixas repetidas sobre o mesmo</td></tr>
+    <tr><td>Melhorias propostas</td><td>Estás a fortalecer o sistema?</td><td>Um mês sem nenhuma proposta</td></tr>
+  </table>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 17</div></div>
+</section>
+
+<!-- ===================== PAGE 18 — MÓDULO 11 ===================== -->
+<section class="page">
+  <div class="mod ink"><div class="num">11</div><div class="bar"><h2>Rotinas e Revisões</h2><p>Os teus rituais fixos. São o que impede o dia de descarrilar.</p></div></div>
+
+  <div class="tl">
+    <div class="t"><b>ABERTURA</b><span>10 min · todos os dias</span></div>
+    <div class="d">Abrir o espaço e os sistemas · conferir a agenda · confirmar que os gabinetes estão higienizados e prontos · escrever as 3 prioridades.</div>
+    <div class="t"><b>FIM DO DIA</b><span>10 min · todos os dias</span></div>
+    <div class="d">Fecho de caixa · check-in diário no canal interno (Módulo 10) · confirmar que todas as sessões do dia estão registadas.</div>
+    <div class="t"><b>SEMANAL</b><span>30 min · sexta ao fim do dia</span></div>
+    <div class="d">Resumo semanal (Módulo 10) · conferir reembolsos submetidos · rever stock de consumíveis · bloco administrativo.</div>
+    <div class="t"><b>MENSAL</b><span>60 min · com o responsável</span></div>
+    <div class="d">Participas na revisão da clínica: trazes o teu resumo do mês, 1 melhoria de protocolo proposta e a lista de tarefas repetidas 3x (candidatas a simplificar).</div>
+  </div>
+
+  <div class="box neutral">
+    <h4>Porque é que isto funciona</h4>
+    <p>15 minutos de ritual por dia poupam horas de confusão por semana. As rotinas não são burocracia: são a razão pela qual aqui ninguém sai tarde a «apagar fogos» — os fogos são apanhados em pequenos, na revisão seguinte, antes de chegarem ao paciente.</p>
+  </div>
+
+  <div class="box sage">
+    <h4>Os rituais de higiene e segurança não têm exceção</h4>
+    <p>Higienizar o gabinete e o material entre pacientes, lavar as mãos, verificar a validade do material clínico — são rituais fixos, não «quando der». Fazem parte da abertura, de cada consulta e do fecho. É assim que se cuida sem riscos.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 18</div></div>
+</section>
+
+<!-- ===================== PAGE 19 — MÓDULO 12 ===================== -->
+<section class="page">
+  <div class="mod sage"><div class="num">12</div><div class="bar"><h2>Integração e Evolução</h2><p>Como ganhas autonomia — com níveis claros, sem favores nem adivinhas.</p></div></div>
+
+  <div class="h first">A tua primeira semana (o plano oficial)</div>
+  <ol class="steps">
+    <li><strong>Dias 1-2:</strong> acessos configurados (Módulo 00) + ler os Módulos 00, 04 e 13 + os protocolos da tua função.</li>
+    <li><strong>Dias 3-5:</strong> acompanhar e executar tarefas reais <strong>com supervisão</strong>. As dúvidas que levantares são melhorias a registar nos protocolos — é o Teste dos 60 Anos em ação.</li>
+    <li><strong>Semana 2:</strong> executas sozinho(a); o responsável revê apenas com a checklist de qualidade.</li>
+  </ol>
+
+  <div class="h">Os 3 níveis de autonomia</div>
+  <table class="sage">
+    <tr><th style="width:140px;">Nível</th><th>O que significa</th><th style="width:210px;">Como se chega lá</th></tr>
+    <tr><td><b>Nível 1</b><br>Executar</td><td>Executas protocolos com revisão total antes de chegar ao paciente. É onde todos começam.</td><td>É onde todos começam.</td></tr>
+    <tr><td><b>Nível 2</b><br>Autonomia</td><td>Executas com revisão por amostragem; comunicas com pacientes dentro das regras do Módulo 04.</td><td>4+ semanas de checklists completas, zero improvisos e registos sempre em dia.</td></tr>
+    <tr><td><b>Nível 3</b><br>Dono de área</td><td>És dono(a) de um protocolo ou área: manténs o protocolo atualizado, integras quem entra, apoias o Nível 1.</td><td>Melhorias aceites com regularidade + domínio comprovado da área.</td></tr>
+  </table>
+
+  <div class="box sage">
+    <h4>O teu currículo interno</h4>
+    <p>Aqui, crescer não depende de «dar nas vistas»: depende de coisas que ficam escritas. Melhorias de protocolo aceites, checklists completas, registos em dia e pacientes satisfeitos são o teu histórico — visível, justo e à prova de esquecimento. O sistema que te forma é o mesmo que te promove.</p>
+  </div>
+
+  <div class="box neutral">
+    <h4>Responsabilidades sem reuniões</h4>
+    <p>Cada protocolo tem o campo <strong>responsavel</strong>. Esse campo é o mapa de quem faz o quê — se tens uma dúvida sobre uma área, o dono do protocolo é a pessoa a quem perguntar. Quando fores dono(a) de um protocolo, o teu nome estará lá.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 19</div></div>
+</section>
+
+<!-- ===================== PAGE 20 — MÓDULO 13 ===================== -->
+<section class="page">
+  <div class="mod alert"><div class="num">13</div><div class="bar"><h2>Segurança e Confidencialidade</h2><p>O que proteges sempre — sem exceções. Isto é condição de trabalho, não sugestão.</p></div></div>
+
+  <div class="h first">Dados, acessos e sigilo</div>
+  <ul class="clean">
+    <li><strong>Tudo no cofre:</strong> palavras-passe, chaves e acessos. Recebes acesso apenas ao que precisas.</li>
+    <li><strong>Verificação em 2 passos (2FA)</strong> ativa em todas as contas de trabalho — configura-se no dia 1.</li>
+    <li><strong>Sigilo profissional:</strong> nada do que vês ou ouves sobre um paciente sai da clínica — durante e depois da colaboração.</li>
+    <li><strong>Só se acede ao que se precisa:</strong> a ficha de um paciente abre-se para o cuidar, nunca por curiosidade.</li>
+  </ul>
+
+  <div class="box alert">
+    <h4>O que nunca fazer (lista vermelha)</h4>
+    <p>Nunca enviar palavras-passe por email ou mensagem. Nunca usar contas ou números pessoais para pacientes. Nunca guardar dados de saúde fora do software de gestão. Nunca apagar registos clínicos. Nunca falar de pacientes fora da clínica — estamos obrigados ao sigilo pelo RGPD e pelo dever profissional. Nunca dar conselhos clínicos fora da tua função. Nunca reutilizar material de uso único nem saltar a higienização.</p>
+  </div>
+
+  <div class="h">Segurança clínica — o cuidado sem riscos</div>
+  <ul class="clean">
+    <li><strong>Higienização</strong> de gabinete e material entre todos os pacientes — sem exceção.</li>
+    <li><strong>Consentimento e contraindicações</strong> verificados antes de qualquer intervenção.</li>
+    <li><strong>Mala de primeiros socorros e saídas de emergência</strong> conhecidas por todos, desde o dia 1.</li>
+    <li><strong>Incidentes</strong> (quedas, reações, mal-estar) — assistir, avisar o profissional e registar no próprio dia.</li>
+  </ul>
+
+  <div class="h">Se uma ferramenta falhar</div>
+  <table>
+    <tr><th style="width:200px;">Falha</th><th>O que fazes</th></tr>
+    <tr><td>Software de gestão em baixo</td><td>Passar à agenda e registos em papel; avisar o responsável; passar tudo para o sistema quando voltar.</td></tr>
+    <tr><td>Terminal de pagamento em baixo</td><td>Combinar pagamento alternativo, registar e emitir o recibo depois; nunca dispensar o registo.</td></tr>
+    <tr><td>Portal de reembolsos indisponível</td><td>Faturar particular e entregar recibo para o paciente submeter mais tarde.</td></tr>
+    <tr><td>Computador perdido / avariado</td><td>Avisar imediatamente; os dados estão no sistema central, não na máquina.</td></tr>
+  </table>
+
+  <div class="box sage">
+    <h4>Confidencialidade</h4>
+    <p>Tudo o que vês aqui — pacientes, dados, processos, este manual — é confidencial e propriedade da Clínica Marques dos Santos. Vale durante e depois da colaboração. Em troca, o sistema protege-te a ti: o que está escrito e seguido defende-te sempre.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 20</div></div>
+</section>
+
+<!-- ===================== PAGE 21 — MÓDULO 14 ===================== -->
+<section class="page">
+  <div class="mod gold2"><div class="num">14</div><div class="bar"><h2>Modelos</h2><p>Os templates que usas no dia a dia. Copiam-se para não começar do zero.</p></div></div>
+
+  <div class="h first">Ficha de Paciente (consulta antes de qualquer contacto)</div>
+  <div class="code"><span class="c">---</span>
+tipo: paciente
+estado: ativo         <span class="c"># novo | ativo | em seguimento | alta</span>
+nome:
+data_nascimento:
+contacto:
+canal_unico: telefone <span class="c"># o ÚNICO canal para contacto</span>
+entidade: [ADSE | SAMS | seguro | particular]
+consentimento: sim    <span class="c"># confirmar ANTES de tratar</span>
+<span class="c">---</span>
+## Motivo e objetivos
+## Antecedentes e contraindicações
+## Episódios e planos
+## Histórico de contactos (mais recente primeiro)</div>
+
+  <div class="h">Ficha de Episódio / Sessão (a tua checklist vive aqui)</div>
+  <div class="code"><span class="c">---</span>
+tipo: episodio
+estado: em tratamento <span class="c"># ver os 7 estados do Módulo 03</span>
+paciente: "[[Paciente - Nome]]"
+especialidade: "[[Serviço - Fisioterapia]]"
+profissional:
+reavaliacao: a cada 4 sessões
+<span class="c">---</span>
+## Avaliação inicial
+## Plano e objetivos
+## Registo de sessões (data - o que se fez - resposta)
+## Reavaliações e alta</div>
+
+  <div class="h">Resumo de consulta (para o paciente, quando aplicável)</div>
+  <div class="box">
+    <p><strong>Hoje ficou assim:</strong> 1) [o que foi feito] · 2) [o que fazer em casa] · 3) [sinais de alerta a vigiar]. A próxima sessão fica marcada para [data]. Qualquer dúvida, contacte-nos por [canal oficial]. Estamos consigo.</p>
+  </div>
+
+  <div class="h">Checklist de alta</div>
+  <div class="check">
+    <p><span class="bx">[ ]</span> Objetivos revistos com o paciente.</p>
+    <p><span class="bx">[ ]</span> Recomendações e plano de manutenção entregues.</p>
+    <p><span class="bx">[ ]</span> Recibos e reembolsos em dia.</p>
+    <p><span class="bx">[ ]</span> Estado do episódio atualizado na ficha.</p>
+    <p><span class="bx">[ ]</span> Reavaliação futura proposta, se fizer sentido.</p>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 21</div></div>
+</section>
+
+<!-- ===================== PAGE 22 — FAQ ===================== -->
+<section class="page">
+  <div class="mod ink"><div class="num">?</div><div class="bar"><h2>Perguntas frequentes do colaborador</h2><p>As dúvidas que toda a gente tem nas primeiras semanas — respondidas de uma vez.</p></div></div>
+
+  <table>
+    <tr><th style="width:230px;">Pergunta</th><th>Resposta</th></tr>
+    <tr><td>«Não percebo um passo de um protocolo. E agora?»</td><td>Pára, não improvises. Pergunta ao dono do protocolo (campo «responsavel») e regista a dúvida no Registo de melhorias — acabaste de melhorar o manual.</td></tr>
+    <tr><td>«Um paciente pede-me um conselho clínico e eu não sou o profissional.»</td><td>«Boa pergunta — quem o pode responder com rigor é o profissional; vou encaminhar.» Nunca inventes um conselho de saúde.</td></tr>
+    <tr><td>«Fiz asneira. Digo já ou tento resolver primeiro?»</td><td>Se houver risco para o paciente, assiste primeiro e chama o profissional. Depois reporta no próprio dia com o método dos 5 pontos (Módulo 10).</td></tr>
+    <tr><td>«O paciente escreveu-me no meu número pessoal.»</td><td>Responde uma vez, simpático(a), reencaminhando para o canal oficial: «para o acompanharmos bem, respondemos por [canal]». Regista na ficha.</td></tr>
+    <tr><td>«Tenho uma ideia para fazer diferente do protocolo.»</td><td>Ótimo — mas primeiro executa como está escrito, depois propõe a melhoria com o porquê. Se for aceite (e validada, se for clínica), muda para todos.</td></tr>
+    <tr><td>«O paciente quer ser atendido já e não há vaga.»</td><td>A regra protege todos: não se sobrepõem consultas. «Vejo a primeira disponível e ligo-lhe ainda hoje.»</td></tr>
+    <tr><td>«Acabei as minhas tarefas mais cedo.»</td><td>Por ordem: rever registos do dia · higienizar e preparar gabinetes · propor 1 melhoria · perguntar onde ajudar.</td></tr>
+    <tr><td>«Esqueci-me de como se faz X.»</td><td>Perfeito — é para isso que o sistema existe. Procura o protocolo. Se não existir, encontraste um buraco no manual: regista-o.</td></tr>
+  </table>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 22</div></div>
+</section>
+
+<!-- ===================== PAGE 23 — MAPA RÁPIDO ===================== -->
+<section class="page">
+  <h1 class="h first" style="font-size:19px;color:var(--ink);">Mapa rápido — «onde encontro…?»</h1>
+  <p class="lead">Guarda esta página. Nos primeiros tempos, é a que mais vais consultar.</p>
+  <table>
+    <tr><th style="width:280px;">Procuro…</th><th>Está em…</th></tr>
+    <tr><td>As instruções de uma tarefa</td><td>Biblioteca › Protocolos — e a checklist copia-se para a ficha</td></tr>
+    <tr><td>O estado e o plano de um paciente</td><td>Software de gestão › ficha do paciente / episódio (Módulo 03)</td></tr>
+    <tr><td>O contacto e o canal oficial de um paciente</td><td>Ficha do paciente (campo canal_unico)</td></tr>
+    <tr><td>Uma palavra-passe ou acesso</td><td>Cofre de acessos — nunca em notas nem em mensagens</td></tr>
+    <tr><td>O que fazer quando um sistema falha</td><td>«Se uma ferramenta falhar» (Módulo 13) + Registo de Erros</td></tr>
+    <tr><td>Os preços e o que inclui cada serviço</td><td>Tabela oficial em vigor + ficha do serviço (Módulos 02 e 06)</td></tr>
+    <tr><td>Como se pede um reembolso</td><td>Módulo 08 + Protocolo «Pedido de reembolso»</td></tr>
+    <tr><td>Templates (fichas, resumos, checklists)</td><td>Biblioteca › Modelos (Módulo 14)</td></tr>
+    <tr><td>O que ficou decidido (e porquê)</td><td>Biblioteca › Registo de Decisões</td></tr>
+    <tr><td>O significado de um termo</td><td>Glossário do Módulo 00</td></tr>
+    <tr><td>O que posso decidir sozinho(a)</td><td>Tabela «decidir vs. escalar» do Módulo 04</td></tr>
+  </table>
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 23</div></div>
+</section>
+
+<!-- ===================== PAGE 24 — 30 DIAS ===================== -->
+<section class="page">
+  <div class="mod"><div class="num">›</div><div class="bar"><h2>Os teus primeiros 30 dias</h2><p>Quatro semanas, do primeiro acesso à tua primeira área de responsabilidade.</p></div></div>
+
+  <div class="box"><h4>Semana 1 · Aprender</h4>
+    <div class="check">
+      <p><span class="bx">[ ]</span> Acessos configurados: email, cofre com 2FA, software de gestão (Módulo 00)</p>
+      <p><span class="bx">[ ]</span> Módulos 00, 04 e 13 lidos + protocolos da tua função</p>
+      <p><span class="bx">[ ]</span> Glossário dominado — explicas ficha clínica, triagem e reembolso por palavras tuas</p>
+      <p><span class="bx">[ ]</span> Acompanhaste consultas reais do acolhimento à alta como observador(a)</p>
+    </div>
+  </div>
+
+  <div class="box sage"><h4>Semana 2 · Executar com rede</h4>
+    <div class="check">
+      <p><span class="bx">[ ]</span> Tarefas reais executadas com supervisão</p>
+      <p><span class="bx">[ ]</span> Check-in diário e primeiro resumo semanal entregues (Módulo 10)</p>
+      <p><span class="bx">[ ]</span> Primeiras dúvidas registadas como propostas de melhoria</p>
+      <p><span class="bx">[ ]</span> Rotinas de abertura e fecho já automáticas (Módulo 11)</p>
+    </div>
+  </div>
+
+  <div class="box neutral"><h4>Semana 3 · Voar com revisão</h4>
+    <div class="check">
+      <p><span class="bx">[ ]</span> Tarefas reais entregues por ti, revistas por amostragem</p>
+      <p><span class="bx">[ ]</span> Primeira comunicação com paciente dentro das regras do Módulo 04</p>
+      <p><span class="bx">[ ]</span> 1 melhoria de protocolo proposta formalmente</p>
+      <p><span class="bx">[ ]</span> Checklist de qualidade completa em todas as tarefas</p>
+    </div>
+  </div>
+
+  <div class="box"><h4>Semana 4 · Assumir</h4>
+    <div class="check">
+      <p><span class="bx">[ ]</span> Participação na revisão mensal com o teu resumo e propostas</p>
+      <p><span class="bx">[ ]</span> Lista de tarefas repetidas 3x entregue (candidatas a simplificar)</p>
+      <p><span class="bx">[ ]</span> Retrospetiva de integração: o que faltou a este manual?</p>
+      <p><span class="bx">[ ]</span> Definição, com o responsável, da tua primeira área rumo ao Nível 2</p>
+    </div>
+  </div>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 24</div></div>
+</section>
+
+<!-- ===================== PAGE 25 — 10 REGRAS ===================== -->
+<section class="page">
+  <h1 class="h first" style="font-size:19px;color:var(--ink);">As 10 regras de ouro — o manual numa página</h1>
+  <p class="lead">Se só memorizares uma página deste manual, que seja esta.</p>
+  <div class="rules">
+    <div class="r"><div class="n">1</div><div class="x">Tudo entra na agenda ou na ficha. Nada fica «na cabeça».</div></div>
+    <div class="r"><div class="n">2</div><div class="x">Se não está escrito, não existe — cada sessão regista-se no próprio dia.</div></div>
+    <div class="r"><div class="n">3</div><div class="x">Lê o protocolo inteiro antes de começar. Se um passo não bater certo, pára e pergunta.</div></div>
+    <div class="r"><div class="n">4</div><div class="x">Sem avaliação e consentimento não há tratamento; sem checklist completa não há alta.</div></div>
+    <div class="r"><div class="n">5</div><div class="x">Um canal oficial por paciente, empatia primeiro, resposta em 1 dia útil.</div></div>
+    <div class="r"><div class="n">6</div><div class="x">Diagnósticos, preços e promessas escalam sempre — «deixe-me confirmar e respondo hoje».</div></div>
+    <div class="r"><div class="n">7</div><div class="x">Palavras-passe só no cofre. Dados de saúde só no software de gestão.</div></div>
+    <div class="r"><div class="n">8</div><div class="x">Higieniza sempre. Erros reportam-se no próprio dia. Esconder é a única falha grave.</div></div>
+    <div class="r"><div class="n">9</div><div class="x">Tarefa repetida 3 vezes = proposta de melhoria. As tuas dúvidas são melhorias por escrever.</div></div>
+    <div class="r"><div class="n">10</div><div class="x">A simplicidade vence sempre — e o sistema que segues é o mesmo que te protege e te promove.</div></div>
+  </div>
+
+  <div class="h">Nota final — o contrato deste manual</div>
+  <ol class="steps">
+    <li><strong>Simplicidade primeiro.</strong> Se leres algo aqui e não perceberes, o manual é que está mal — diz-nos e corrigimos. É assim que ele melhora.</li>
+    <li><strong>Melhoria contínua.</strong> Cada atendimento pode melhorar uma linha deste documento. Melhoria pequena e constante vence a reforma heroica ocasional.</li>
+    <li><strong>O sistema protege-te.</strong> Quem segue os protocolos, marca as checklists e reporta cedo nunca depende de memória nem leva culpas injustas — o que está escrito defende-te.</li>
+  </ol>
+  <p style="font-size:10px;color:var(--muted);margin-top:14px;">Clínica Marques dos Santos · Manual do Colaborador v1.0 · Documento vivo — as tuas dúvidas são as próximas melhorias.</p>
+
+  <div class="foot"><div class="brand"><span class="bar"></span>Clínica Marques dos Santos · Manual do Colaborador · v1.0</div><div>Página 25</div></div>
+</section>
+
+</body>
+</html>
